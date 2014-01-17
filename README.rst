@@ -36,13 +36,13 @@ Top-level Files
 README Files
 ~~~~~~~~~~~~
 
-Of course your product should have a README file!  The preferred name and
+Of course your product should have a README(.rst) file!  The preferred name and
 format is ``README.rst``.  When you add such a file to svn, be sure that
 the svn:mime-type property is set::
 
     svn propset svn:mime-type text/x-rst README.rst
 
-This will allow Trac to render your README file in HTML.  In fact, you should
+This will allow Trac to render your README.rst file in HTML.  In fact, you should
 set this mime-type for any and all .rst files that you have.
 
 setup.py
