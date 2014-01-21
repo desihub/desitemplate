@@ -26,7 +26,9 @@ etc/
     Contains data and configuration files used by the code.  This does not
     mean you should be checking in large data files!
 py/
-    Contains Python code.
+    Contains Python code.  Top-level Python package directories should be
+    placed *within* the py/ directory.  This simplifies the specification
+    of the ``$PYTHONPATH`` variable.
 src/
     Contains C/C++ code.
 
