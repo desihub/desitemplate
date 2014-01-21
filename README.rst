@@ -7,6 +7,17 @@ Introduction
 
 This repository is intended to be a template for other repositories.
 
+Product Name
+============
+
+The name of a software product should be short but descriptive.  You may be
+stuck with it for a long time.
+
+There is one important guideline when createing a new product.
+** Don't choose a name that contains a hyphen! **  Automation will be
+converting the product name into an environment variable, and shells don't
+like environment variable names that contain hyphens.
+
 Product Contents
 ================
 
@@ -60,4 +71,12 @@ configure
 
 If your product is primarily C/C++, it should have a configure file or the
 autotools files needed to generate a configure file.
+
+.module file
+~~~~~~~~~~~~
+
+In this directory is a file called template.module.  This file is used to
+create a module file for the product at install time.  It should be renamed
+to the name of the product plus ``.module``.  It should be customized for
+the needs of the product.
 
