@@ -3,9 +3,12 @@ template
 ========
 
 Introduction
-------------
+============
 
 This repository is intended to be a template for other repositories.
+
+Product Contents
+================
 
 Directory Structure
 -------------------
@@ -18,7 +21,7 @@ bin/
 doc/
     Contains high-level documentation of the software.  Typically, the code
     itself will contain its own documentation.  This area is for
-    documentation that discusses the package as a whole.
+    documentation that discusses the product as a whole.
 etc/
     Contains data and configuration files used by the code.  This does not
     mean you should be checking in large data files!
@@ -28,7 +31,7 @@ src/
     Contains C/C++ code.
 
 You should only create the directories you actually need.  For example,
-if you are writing a pure Python package, you don't need the src directory.
+if you are writing a pure Python product, you don't need the src directory.
 
 Top-level Files
 ---------------
@@ -49,3 +52,10 @@ setup.py
 ~~~~~~~~
 
 If your product is primarily Python, it should have a setup.py file.
+
+configure
+~~~~~~~~~
+
+If your product is primarily C/C++, it should have a configure file or the
+autotools files needed to generate a configure file.
+
