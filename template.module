@@ -5,7 +5,8 @@
 # METADATA AND DOCUMENTATION SECTION
 #
 # This function is part of the Modules help system.  You can modify
-# the second line if needed.
+# the second line if needed, but most products should
+# leave this alone.
 #
 proc ModulesHelp { } {
     global product version
@@ -33,7 +34,7 @@ module-whatis "Sets up $product/$version in your environment."
 # If your product requires other software to function, that should be declared
 # here.  There are two types of dependencies: mandatory and optional.
 # A mandatory dependency is a module load command followed by a prereq
-# command.  An optional dependency does is not followed by a prereq statement.
+# command.  An optional dependency is not followed by a prereq statement.
 #
 ###module load required/1.0
 ###prereq required/1.0

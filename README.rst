@@ -13,8 +13,8 @@ Product Name
 The name of a software product should be short but descriptive.  You may be
 stuck with it for a long time.
 
-There is one important guideline when createing a new product.
-** Don't choose a name that contains a hyphen! **  Automation will be
+There is one important guideline when creating a new product.
+**Don't choose a name that contains a hyphen!**  Automation will be
 converting the product name into an environment variable, and shells don't
 like environment variable names that contain hyphens.
 
