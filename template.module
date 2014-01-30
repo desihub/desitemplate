@@ -36,9 +36,9 @@ module-whatis "Sets up $product/$version in your environment."
 # A mandatory dependency is a module load command followed by a prereq
 # command.  An optional dependency is not followed by a prereq statement.
 #
-###module load required/1.0
-###prereq required/1.0
-###module load optional
+# module load required/1.0
+# prereq required/1.0
+# module load optional
 #
 # ENVIRONMENT SECTION
 #
@@ -62,6 +62,6 @@ setenv [string toupper $product]_DIR $PRODUCT_DIR
 # The lines below set various other environment variables.  They assume the
 # template product layout.  Uncomment as necessary
 #
-###prepend-path PATH $PRODUCT_DIR/bin
-###prepend-path PYTHONPATH $PRODUCT_DIR/py
-###prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
+# prepend-path PATH $PRODUCT_DIR/bin
+# prepend-path PYTHONPATH $PRODUCT_DIR/py
+# prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
