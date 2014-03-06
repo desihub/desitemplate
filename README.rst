@@ -72,10 +72,13 @@ configure
 If your product is primarily C/C++, it should have a configure file or the
 autotools files needed to generate a configure file.
 
+Other Files
+-----------
+
 .module file
 ~~~~~~~~~~~~
 
-In this directory is a file called template.module.  This file is used to
+In the etc/ directory is a file called template.module.  This file is used to
 create a module file for the product at install time.  It should be renamed
 to the name of the product plus ``.module``.  It should be customized for
 the needs of the product.
