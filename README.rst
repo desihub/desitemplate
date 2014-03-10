@@ -64,7 +64,8 @@ set this mime-type for any and all .rst files that you have.
 setup.py
 ~~~~~~~~
 
-If your product is primarily Python, it should have a setup.py file.
+If your product is primarily Python, it should have a setup.py file.  See
+the setup.py file included with this template product for further details.
 
 configure
 ~~~~~~~~~
