@@ -22,7 +22,7 @@ except ImportError:
             LONG_DESCRIPTION = readme.read()
     else:
         LONG_DESCRIPTION = ''
-    VERSION = '0.0.dev'
+    VERSION = '0.0.1.dev'
 #
 # Set affiliated package-specific settings.  Change these as needed.
 #

@@ -33,6 +33,6 @@ def version():
 
     .. _PEP386: http://www.python.org/dev/peps/pep-0386).
     """
-    return '0.1'
+    return '0.0.1.dev'
 
 __version__ = version()
