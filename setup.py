@@ -36,8 +36,34 @@ URL = 'https://desi.lbl.gov'
 # Indicates if this version is a release version.
 #
 RELEASE = 'dev' not in VERSION
-#if not RELEASE:
-#    VERSION += get_svn_devstr(False)
+#
+#
+#
+def get_svn_devstr():
+    """Get the svn revision number.
+
+    Parameters
+    ----------
+    None
+
+    Returns
+    -------
+    get_svn_devstr : str
+        The latest svn revision number.
+    """
+    from subprocess import Popen, PIPE
+    proc = Popen(['svnversion','-n'],stdout=PIPE,stderr=PIPE)
+    out, err = proc.communicate()
+    rev = out
+    if ':' in out:
+        rev = out.split(':')[1]
+    rev = rev.replace('M','').replace('S','').replace('P','')
+    return rev
+#
+#
+#
+if not RELEASE:
+    VERSION += get_svn_devstr()
 #
 # Treat everything in bin/ except *.rst as a script to be installed.
 #
