@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # License information goes here
 #
+# Imports
+#
 import glob
 import os
 import sys
-from setuptools import setup
+from setuptools import setup, find_packages
 #
 # Import this module to get __doc__ and version().
 #
@@ -33,11 +35,7 @@ AUTHOR_EMAIL = 'baweaver@lbl.gov'
 LICENSE = 'BSD'
 URL = 'https://desi.lbl.gov'
 #
-# Indicates if this version is a release version.
-#
-RELEASE = 'dev' not in VERSION
-#
-#
+# Obtain svn information.
 #
 def get_svn_devstr():
     """Get the svn revision number.
@@ -60,8 +58,9 @@ def get_svn_devstr():
     rev = rev.replace('M','').replace('S','').replace('P','')
     return rev
 #
+# Indicates if this version is a release version.
 #
-#
+RELEASE = 'dev' not in VERSION
 if not RELEASE:
     VERSION += get_svn_devstr()
 #
@@ -69,6 +68,29 @@ if not RELEASE:
 #
 scripts = [fname for fname in glob.glob(os.path.join('bin', '*'))
            if not os.path.basename(fname).endswith('.rst')]
+#
+# If we are using --prefix, manipulate the prefix directory and make sure
+# it is in sys.path
+#
+prefix = [arg for arg in sys.argv if arg.startswith('--prefix')]
+if len(prefix) > 0:
+    i = sys.argv.index(prefix[0])
+    prefdir = prefix[0].split('=')[1]
+    if os.path.basename(prefdir) == PACKAGENAME:
+        prefdir = os.path.join(prefdir,VERSION)
+    else:
+        prefdir = os.path.join(prefdir,PACKAGENAME,VERSION)
+    sys.argv[i] = '--prefix='+prefdir
+    # print(sys.argv)
+    #
+    # Get the Python version
+    #
+    pyversion = "python{0:d}.{1:d}".format(*sys.version_info)
+    libdir = os.path.join(prefdir,'lib',pyversion,'site-packages')
+    # If os.makedirs raises an exception, we want this to halt!
+    os.makedirs(libdir)
+    os.environ['PYTHONPATH'] = libdir + ':' + os.environ['PYTHONPATH']
+    sys.path.insert(int(sys.path[0] == ''),libdir)
 #
 # Run setup command
 #
@@ -86,5 +108,6 @@ setup(name=PACKAGENAME,
       long_description=LONG_DESCRIPTION,
       zip_safe=False,
       use_2to3=True,
+      packages=find_packages('py'),
       package_dir = {'':'py'}
 )
