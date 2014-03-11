@@ -13,3 +13,6 @@ Components
    :maxdepth: 1
 
    hello.rst
+
+.. automodule:: template
+   :members:
