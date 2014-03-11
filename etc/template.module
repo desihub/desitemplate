@@ -68,6 +68,6 @@ setenv [string toupper $product]_DIR $PRODUCT_DIR
 # The lines below set various other environment variables.  They assume the
 # template product layout.  Uncomment as necessary
 #
-# prepend-path PATH $PRODUCT_DIR/bin
-# prepend-path PYTHONPATH $PRODUCT_DIR/lib/{_pyversion}/site-packages
-# prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
+{_needs_bin}prepend-path PATH $PRODUCT_DIR/bin
+{_needs_python}prepend-path PYTHONPATH $PRODUCT_DIR/lib/{_pyversion}/site-packages
+{_needs_ld_lib}prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
