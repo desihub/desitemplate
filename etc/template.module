@@ -2,16 +2,22 @@
 # The first line of this file tells Modules that this is a module file.
 # DO NOT ALTER IT!
 #
+# ABOUT THIS FILE
+#
+# This file is designed to be processed by Python.  Specifically, this file
+# will be read into a string, and the .format() method will be applied to it.
+# This file is not a valid module file on its own.
+#
 # METADATA AND DOCUMENTATION SECTION
 #
 # This function is part of the Modules help system.  You can modify
 # the second line if needed, but most products should
 # leave this alone.
 #
-proc ModulesHelp { } {
+proc ModulesHelp {{ }} {{
     global product version
     puts stderr "This module adds $product/$version to your environment."
-}
+}}
 #
 # These variables are used below.  The product variable should be set to
 # the name of the product and never changed.  The version variable will
@@ -19,8 +25,8 @@ proc ModulesHelp { } {
 # prevents multiple versions from being loaded simultaneously.  Do not
 # change it.
 #
-set product template
-set version trunk
+set product {name}
+set version {version}
 conflict $product
 #
 # The line below is another part of the Modules help system.  You can
@@ -47,11 +53,11 @@ module-whatis "Sets up $product/$version in your environment."
 # If you are not working at NERSC, but still want to use Modules, you
 # will need to set the DESI_PRODUCT_ROOT environment variable
 #
-if {[info exists env(DESI_PRODUCT_ROOT)]} {
+if {{[info exists env(DESI_PRODUCT_ROOT)]}} {{
     set PRODUCT_ROOT $env(DESI_PRODUCT_ROOT)
-} else {
+}} else {{
     set PRODUCT_ROOT /project/projectdirs/desi/software/$env(NERSC_HOST)
-}
+}}
 set PRODUCT_DIR $PRODUCT_ROOT/$product/$version
 #
 # This line creates an environment variable pointing to the install
@@ -63,5 +69,5 @@ setenv [string toupper $product]_DIR $PRODUCT_DIR
 # template product layout.  Uncomment as necessary
 #
 # prepend-path PATH $PRODUCT_DIR/bin
-# prepend-path PYTHONPATH $PRODUCT_DIR/py
+# prepend-path PYTHONPATH $PRODUCT_DIR/lib/{_pyversion}/site-packages
 # prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
