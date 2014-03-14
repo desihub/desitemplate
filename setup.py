@@ -129,7 +129,7 @@ if len(prefix) > 0 and 'install' in sys.argv:
             m.write(mod)
 else:
     if 'install' in sys.argv:
-        print("Warning, you are attempting to install without setting --prefix.  This is not recommended.")
+        print("You must add --prefix to use this installer.")
         sys.exit(1)
 #
 # Run setup command.  setup() will emit warnings about unknown keywords we
