@@ -7,11 +7,7 @@ import glob
 import os
 import sys
 from setuptools import setup, find_packages
-#
-# Import this module to get __doc__ and version().
-#
 setup_keywords = dict()
-sys.path.insert(int(sys.path[0] == ''),'./py')
 #
 # THESE SETTINGS NEED TO BE CHANGED FOR EVERY PRODUCT.
 #
@@ -24,6 +20,10 @@ setup_keywords['url'] = 'https://desi.lbl.gov/svn/code/tools/template'
 #
 # END OF SETTINGS THAT NEED TO BE CHANGED.
 #
+#
+# Import this module to get __doc__ and version().
+#
+sys.path.insert(int(sys.path[0] == ''),'./py')
 try:
     from importlib import import_module
     product = import_module(setup_keywords['name'])
@@ -77,9 +77,10 @@ if not RELEASE:
 #
 # Treat everything in bin/ except *.rst as a script to be installed.
 #
-setup_keywords['scripts'] = [fname for fname in glob.glob(os.path.join('bin', '*'))
-    if not os.path.basename(fname).endswith('.rst')]
-setup_keywords['provides'] = [PRODUCT_NAME]
+if os.path.isdir('bin'):
+    setup_keywords['scripts'] = [fname for fname in glob.glob(os.path.join('bin', '*'))
+        if not os.path.basename(fname).endswith('.rst')]
+setup_keywords['provides'] = [setup_keywords['name']]
 setup_keywords['requires'] = ['Python (>2.6.0)']
 #setup_keywords['install_requires'] = ['Python (>2.6.0)']
 setup_keywords['zip_safe'] = False
