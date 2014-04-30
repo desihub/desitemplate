@@ -5,7 +5,7 @@ Welcome to template's documentation!
 Introduction
 ============
 
-This is the documentaiton for template.
+This is the documentation for template.
 
 Contents
 ========
