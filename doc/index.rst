@@ -2,6 +2,11 @@
 Welcome to template's documentation!
 ====================================
 
+Introduction
+============
+
+This is the documentaiton for template.
+
 Contents
 ========
 
