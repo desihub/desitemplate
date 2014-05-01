@@ -15,7 +15,7 @@ Contents
 
    hello.rst
 
-.. automodule:: desiDataModel
+.. automodule:: template
    :members:
 
 Indices and tables
