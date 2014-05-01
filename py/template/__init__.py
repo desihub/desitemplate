@@ -16,7 +16,7 @@ package variable.
 """
 
 def version():
-    """Returns the version of the template package.
+    """Returns the version of this package.
 
     Parameters
     ----------
@@ -43,7 +43,7 @@ def version():
         url = headurl[10:len(headurl)-2]
         findstr = ('branches','trunk')[int(headurl.find('trunk') > 0)]
         tagurl = url[0:url.find(findstr)]+'tags'
-        most_recent_tag(tagurl) + '.dev' + get_svn_devstr()
+        myversion = most_recent_tag(tagurl) + '.dev' + get_svn_devstr()
     else:
         myversion = '0.0.1.dev'
     return myversion
