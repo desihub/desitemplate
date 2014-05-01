@@ -40,7 +40,10 @@ def version():
     if headurl.find('tags') > 0:
         myversion = headurl[headurl.find('tags')+5:].split('/')[0]
     elif (headurl.find('trunk') > 0) or (headurl.find('branches') > 0):
-        most_recent_tag() + '.dev' + get_svn_devstr()
+        url = headurl[10:len(headurl)-2]
+        findstr = ('branches','trunk')[int(headurl.find('trunk') > 0)]
+        tagurl = url[0:url.find(findstr)]+'tags'
+        most_recent_tag(tagurl) + '.dev' + get_svn_devstr()
     else:
         myversion = '0.0.1.dev'
     return myversion
