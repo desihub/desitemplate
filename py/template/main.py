@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """This docstring will be used to print a description of the main program.
 """
-from __future__ import print_function
+#
+from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
 def main():
     """Main program.
@@ -33,11 +34,4 @@ def main():
     print('Hello World!')
     if options.verbose:
         print('Verbose selected!')
-    options = parser.parse_args()
     return 0
-#
-#
-#
-if __name__ == '__main__':
-    from sys import exit
-    exit(main())
