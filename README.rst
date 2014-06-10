@@ -18,6 +18,18 @@ There is one important guideline when creating a new product.
 converting the product name into an environment variable, and shells don't
 like environment variable names that contain hyphens.
 
+Installing a Product
+====================
+
+DESI products should be installed with desiInstall.  desiInstall decides how
+to perform an installation based on the files it finds in the top level of
+the product directory (see below).
+
+There may be situations where a product contains no code by design.  In this
+case it should still contain a stripped-down top-level Makefile that
+contains enough functionality to install the product, but otherwise
+does nothing.
+
 Product Contents
 ================
 
@@ -27,24 +39,40 @@ Directory Structure
 A DESI software product may contain these directories:
 
 bin/
-    Contains executable scripts and binaries (after compilation).  Typically,
-    this directory will be added to your ``$PATH``.
+    This directory is only needed if the product contains executable code.
+    If you do not have any scripts, and you are not planning to compile any
+    C/C++ code to create an executable, you can omit this directory from your
+    svn product.  This is more likely to be the case for Python-based products
+    than for C/C++-based products.  If this directory is present, but empty,
+    this is a signal to desiInstall that you intend to compile C/C++ code
+    to create an executable binary.
 doc/
     Contains high-level documentation of the software.  Typically, the code
     itself will contain its own documentation.  This area is for
-    documentation that discusses the product as a whole.
+    documentation that discusses the product as a whole.  Both Sphinx_ (for
+    Python) and Doxygen_ can and will process files placed in this directory.
+    Sphinx_ documents should be .rst files, while Doxygen_ documents should
+    be .dox files.
 etc/
     Contains data and configuration files used by the code.  This does not
     mean you should be checking in large data files!
+lib/
+    If this directory is present, even if it is empty, it is a signal to
+    desiInstall that you intend to compile C/C++ code to produce a library
+    (static or shared). *At this time we have not set a policy on include
+    files (.h/.hpp) that may be required to use such libraries.*
 py/
     Contains Python code.  Top-level Python package directories should be
-    placed *within* the py/ directory.  This simplifies the specification
+    placed *within* the ``py/`` directory.  This simplifies the specification
     of the ``$PYTHONPATH`` variable.
 src/
     Contains C/C++ code.
 
 You should only create the directories you actually need.  For example,
 if you are writing a pure Python product, you don't need the src directory.
+
+.. _Sphinx: http://sphinx-doc.org
+.. _Doxygen: http://www.stack.nl/~dimitri/doxygen/
 
 Top-level Files
 ---------------
@@ -67,11 +95,17 @@ setup.py
 If your product is primarily Python, it should have a setup.py file.  See
 the setup.py file included with this template product for further details.
 
-configure
-~~~~~~~~~
+**If your product contains a setup.py file, desiInstall will assume that your
+product is Python-based and will process it accordingly.**
 
-If your product is primarily C/C++, it should have a configure file or the
-autotools files needed to generate a configure file.
+configure/Makefile
+~~~~~~~~~~~~~~~~~~
+
+If your product is C/C++-based, at minimum you will need a top-level Makefile,
+which should point to a Makefile in the ``src/`` directory.  This may suffice
+for relatively simple C/C++-based products.  More complicated compiles will
+require a configure file or the autotools files needed to generate a
+configure file.
 
 Other Files
 -----------
@@ -82,5 +116,14 @@ Other Files
 In the etc/ directory is a file called template.module.  This file is used to
 create a module file for the product at install time.  It should be renamed
 to the name of the product plus ``.module``.  It should be customized for
-the needs of the product.
+the needs of the product.  In particular, any packages that your product
+depends on should be added to the module file.
 
+src/Makefile
+~~~~~~~~~~~~
+
+It is assumed that most of the heavy-duty work of compiling a C/C++-based
+product will take place in the src directory, and that the src/Makefile
+will handle that compiling.  It should be set up (or created in a configure
+stage) accordingly.  Libraries (shared or static) should be written to the
+``lib/`` directory, and executables should be written to the ``bin/`` directory.

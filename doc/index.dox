@@ -1,0 +1,10 @@
+/// \mainpage template - The DESI C++ Template
+/// \author Benjamin Weaver <benjamin.weaver@nyu.edu>
+/// \version 0.1.2
+///
+/// \copyright (C) 2014 MS-DESI
+///
+/// \section sec-intro Introduction
+///
+/// This file shows how to create a standalone .dox file.
+///
