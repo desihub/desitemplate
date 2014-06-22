@@ -1,4 +1,13 @@
 #
+# Template Makefile for use with desiInstall.  You can assume that
+# desiInstall will set these environment variables:
+#
+# WORKING_DIR   : The directory containing the svn export
+# INSTALL_DIR   : The directory the installed product will live in.
+# (PRODUCT)_DIR : Where (PRODUCT) is replaced with the name of the
+#                 product in upper case, e.g. TEMPLATE_DIR.  This should
+#                 be the same as WORKING_DIR for typical installs.
+#
 # Use this shell to interpret shell commands, & pass its value to sub-make
 #
 export SHELL = /bin/sh
@@ -14,15 +23,25 @@ MAKEFLAGS = w
 #
 SUBDIRS = src doc
 #
-# This line helps prevent make from getting confused in the case where you
-# have a file named 'clean'.
+# This is a list of directories that make should copy to $INSTALL_DIR.
 #
-.PHONY : clean
+INSTALLDIRS = bin doc lib pro
+#
+# This is a message to make that these targets are 'actions' not files.
+#
+.PHONY : all install clean
 #
 # This should compile all code prior to it being installed
 #
 all :
 	@ for f in $(SUBDIRS); do $(MAKE) -C $$f all ; done
+#
+# This should handle the installation of files in $INSTALL_DIR
+#
+install : all
+	@ for f in $(INSTALLDIRS); do \
+		if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
+			cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; done
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).

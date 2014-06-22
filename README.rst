@@ -58,7 +58,9 @@ doc/
 etc/
     Contains small data and configuration files used by the code.  This does not
     mean you should be checking in large data files!  This directory also
-    contains the template module file for the product.
+    contains the template module file for the product.  If additional files
+    are found in this directory, they will be installed automatically,
+    independent of any Makefile.
 lib/
     If this directory is present, even if it is empty, it is a signal to
     desiInstall that you intend to compile C/C++ code to produce a library
