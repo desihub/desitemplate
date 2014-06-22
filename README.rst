@@ -68,7 +68,7 @@ lib/
     files (.h/.hpp) that may be required to use such libraries.*
 pro/
     If this directory is present, support for IDL code will be added to the
-    Module file.  This is not an endorsement of widespread use of IDL.
+    Module file.
 py/
     Contains Python code.  Top-level Python package directories should be
     placed *within* the ``py/`` directory.  This simplifies the specification
@@ -102,8 +102,9 @@ setup.py
 
 If your product is primarily Python, it should have a setup.py file.  See
 the setup.py file included with this template product for further details.
-desiInstall will process this file with
-``python setup.py install --prefix=$INSTALL_DIR``.
+desiInstall will process this file with::
+
+    python setup.py install --prefix=$INSTALL_DIR.
 
 **If your product contains a setup.py file, desiInstall will assume that your
 product is Python-based and will process it accordingly.**
@@ -119,7 +120,10 @@ configure file.
 
 The Makefile will be called with ``make install``.  Helpful environment
 variables such as ``WORKING_DIR`` and ``INSTALL_DIR`` will be supplied by
-desiInstall.  The Makefile should be prepared to handle the installation of
+desiInstall.  In the example Makfile included with the template product,
+``make install`` performs a ``make all`` automatically.
+
+The Makefile should be prepared to handle the installation of
 files and directories in ``INSTALL_DIR``.  That is, desiInstall won't try
 to second-guess what files and directories you want to install.
 

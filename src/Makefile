@@ -37,10 +37,9 @@ ifeq ($(UNAME), Darwin)
 	SOFLAGS = -dynamiclib
 endif
 #
-# This line helps prevent make from getting confused in the case where you
-# have a file named 'clean'.
+# This is a message to make that these targets are 'actions' not files.
 #
-.PHONY : clean
+.PHONY : all clean
 #
 # Makefiles should always define this target.
 #

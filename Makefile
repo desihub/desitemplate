@@ -31,17 +31,18 @@ INSTALLDIRS = bin doc lib pro
 #
 .PHONY : all install clean
 #
-# This should compile all code prior to it being installed
+# This should compile all code prior to it being installed.
 #
 all :
 	@ for f in $(SUBDIRS); do $(MAKE) -C $$f all ; done
 #
-# This should handle the installation of files in $INSTALL_DIR
+# This should handle the installation of files in $INSTALL_DIR.  Note that
+# 'all' is a dependency of 'install'.
 #
 install : all
 	@ for f in $(INSTALLDIRS); do \
 		if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
-			cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; done
+			/bin/cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; done
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).
