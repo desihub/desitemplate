@@ -61,7 +61,7 @@ install : all
 	/bin/mkdir -p $(INSTALL_DIR)/bin
 	/bin/cp -vf $(WORKING_DIR)/bin/template_version $(INSTALL_DIR)/bin
 	/bin/mkdir -p $(INSTALL_DIR)/lib
-	/bin/cp -vf $(WORKING_DIR)/bin/libtemplate.$(SO) $(INSTALL_DIR)/lib
+	/bin/cp -vf $(WORKING_DIR)/lib/libtemplate.$(SO) $(INSTALL_DIR)/lib
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).
