@@ -41,8 +41,9 @@ all :
 #
 install : all
 	@ for f in $(INSTALLDIRS); do \
-		if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
-			/bin/cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; done
+		if test -f $$f/Makefile; then $(MAKE) -C $$f install; else \
+			if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
+				/bin/cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; fi; done
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).
