@@ -24,8 +24,10 @@ MAKEFLAGS = w
 SUBDIRS = src doc
 #
 # This is a list of directories that make should copy to $INSTALL_DIR.
+# If a Makefile is present in these directories, 'make install' will be
+# called on them.  Otherwise it will just be a plain copy.
 #
-INSTALLDIRS = bin doc lib pro
+INSTALLDIRS = doc pro src
 #
 # This is a message to make that these targets are 'actions' not files.
 #
@@ -34,15 +36,16 @@ INSTALLDIRS = bin doc lib pro
 # This should compile all code prior to it being installed.
 #
 all :
-	@ for f in $(SUBDIRS); do $(MAKE) -C $$f all ; done
+	@ for f in $(SUBDIRS); do if test -f $$f/Makefile; then $(MAKE) -C $$f all; fi; done
 #
 # This should handle the installation of files in $INSTALL_DIR.  Note that
 # 'all' is a dependency of 'install'.
 #
 install : all
 	@ for f in $(INSTALLDIRS); do \
-		if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
-			/bin/cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; done
+		if test -f $$f/Makefile; then $(MAKE) -C $$f install; else \
+			if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
+				/bin/cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; fi; done
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).
