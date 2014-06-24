@@ -34,7 +34,7 @@ INSTALLDIRS = bin doc lib pro
 # This should compile all code prior to it being installed.
 #
 all :
-	@ for f in $(SUBDIRS); do $(MAKE) -C $$f all ; done
+	@ for f in $(SUBDIRS); do if test -f $$f/Makefile; then $(MAKE) -C $$f all; fi; done
 #
 # This should handle the installation of files in $INSTALL_DIR.  Note that
 # 'all' is a dependency of 'install'.
