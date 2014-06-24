@@ -24,8 +24,10 @@ MAKEFLAGS = w
 SUBDIRS = src doc
 #
 # This is a list of directories that make should copy to $INSTALL_DIR.
+# If a Makefile is present in these directories, 'make install' will be
+# called on them.  Otherwise it will just be a plain copy.
 #
-INSTALLDIRS = bin doc lib pro
+INSTALLDIRS = doc pro src
 #
 # This is a message to make that these targets are 'actions' not files.
 #
