@@ -34,15 +34,16 @@ INSTALLDIRS = bin doc lib pro
 # This should compile all code prior to it being installed.
 #
 all :
-	@ for f in $(SUBDIRS); do $(MAKE) -C $$f all ; done
+	@ for f in $(SUBDIRS); do if test -f $$f/Makefile; then $(MAKE) -C $$f all; fi; done
 #
 # This should handle the installation of files in $INSTALL_DIR.  Note that
 # 'all' is a dependency of 'install'.
 #
 install : all
 	@ for f in $(INSTALLDIRS); do \
-		if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
-			/bin/cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; done
+		if test -f $$f/Makefile; then $(MAKE) -C $$f install; else \
+			if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
+				/bin/cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; fi; done
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).

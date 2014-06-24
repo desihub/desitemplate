@@ -39,7 +39,7 @@ endif
 #
 # This is a message to make that these targets are 'actions' not files.
 #
-.PHONY : all clean
+.PHONY : all clean install
 #
 # Makefiles should always define this target.
 #
@@ -54,6 +54,14 @@ $(BIN)/template_version: $(LIB)/libtemplate.$(SO) main.o
 #
 $(LIB)/libtemplate.$(SO): $(OBJECTS)
 	$(LINK.cc) $(SOFLAGS) $^ $(LOADLIBES) -o $@
+#
+# Copy built executables and libraries to their final locations.
+#
+install : all
+	/bin/mkdir -p $(INSTALL_DIR)/bin
+	/bin/cp -vf $(WORKING_DIR)/bin/template_version $(INSTALL_DIR)/bin
+	/bin/mkdir -p $(INSTALL_DIR)/lib
+	/bin/cp -vf $(WORKING_DIR)/bin/libtemplate.$(SO) $(INSTALL_DIR)/lib
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).
