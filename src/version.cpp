@@ -6,7 +6,7 @@
 //
 //
 //
-std::string desiUtil::version(const std::string headurl)
+std::string desiUtil::version(const std::string& headurl)
 {
     std::string defaultVersion("0.0.1.dev");
     std::string url = headurl.substr(10,headurl.length()-12); // Strip $HeadURL stuff.

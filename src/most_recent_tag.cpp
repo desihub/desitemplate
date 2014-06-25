@@ -6,7 +6,7 @@
 //
 //
 //
-std::string desiUtil::most_recent_tag(const std::string tags)
+std::string desiUtil::most_recent_tag(const std::string& tags)
 {
     std::list<std::string> taglist;
     std::string notag("0.0.1");

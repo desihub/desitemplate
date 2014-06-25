@@ -6,7 +6,7 @@
 //
 //
 //
-std::string desiUtil::get_svn_devstr(const std::string product)
+std::string desiUtil::get_svn_devstr(const std::string& product)
 {
     std::string cbuff("");
     std::string unversioned("0");

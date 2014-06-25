@@ -9,6 +9,7 @@
 #ifndef _HAVE_TEMPLATE_HPP_
 #define _HAVE_TEMPLATE_HPP_
 #include <iostream>
+#include <sstream>
 #include <algorithm> // for std::transform()
 #include <string>
 #include <list>
@@ -20,14 +21,21 @@
 ///
 namespace desiUtil {
     ///
+    /// \brief Parse a string into version numbers.
+    ///
+    /// \param result An array of int to hold the result.
+    /// \param input The string to parse.
+    ///
+    void parse_version(int result[4], const std::string& input);
+    ///
     /// \brief Compare two version strings.
     ///
-    /// \param first The first string to compare.
-    /// \param second The second string to compare.
+    /// \param a The first string to compare.
+    /// \param b The second string to compare.
     ///
     /// \return True if the first version is "less" than the second version.
     ///
-    bool compare_version(const std::string& first, const std::string& second);
+    bool compare_version(const std::string& a, const std::string& b);
     ///
     /// \brief Get the most recent tag.
     ///
@@ -37,7 +45,7 @@ namespace desiUtil {
     ///
     /// \warning This function will try to communicate with the svn repository.
     ///
-    std::string most_recent_tag(const std::string tags);
+    std::string most_recent_tag(const std::string& tags);
     ///
     /// \brief Get the svn revision number.
     ///
@@ -48,7 +56,7 @@ namespace desiUtil {
     /// \return The svn revision number in string form.  A value of "0"
     /// indicates an error of some kind.
     ///
-    std::string get_svn_devstr(const std::string product);
+    std::string get_svn_devstr(const std::string& product);
     ///
     /// \brief Version of the product.
     ///
@@ -58,6 +66,6 @@ namespace desiUtil {
     ///
     /// \return The version name.
     ///
-    std::string version(const std::string headurl);
+    std::string version(const std::string& headurl);
 } // end namespace desiUtil
 #endif // end ifndef _HAVE_TEMPLATE_HPP_
