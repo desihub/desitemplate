@@ -20,6 +20,15 @@
 ///
 namespace desiUtil {
     ///
+    /// \brief Compare two version strings.
+    ///
+    /// \param first The first string to compare.
+    /// \param second The second string to compare.
+    ///
+    /// \return True if the first version is "less" than the second version.
+    ///
+    bool compare_version(const std::string& first, const std::string& second);
+    ///
     /// \brief Get the most recent tag.
     ///
     /// \param tags The URL pointing to the tags directory for this product.

@@ -21,7 +21,7 @@ std::string desiUtil::most_recent_tag(const std::string tags)
     }
     pclose(in);
     if (taglist.size() > 0 && taglist.front().length() > 0) {
-        taglist.sort();
+        taglist.sort(desiUtil::compare_version);
         return taglist.back();
     } else {
         return notag;
