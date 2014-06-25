@@ -11,7 +11,7 @@ CPPFLAGS  = -Wall -O -fPIC
 #
 # Objects to compile
 #
-OBJECTS = most_recent_tag.o get_svn_devstr.o version.o
+OBJECTS = most_recent_tag.o get_svn_devstr.o version.o compare_version.o parse_version.o
 #
 # By default, make uses this rule to compile individual objects. Override
 # if necessary
@@ -48,7 +48,7 @@ all : $(BIN)/template_version
 # This creates the executable.
 #
 $(BIN)/template_version: $(LIB)/libtemplate.$(SO) main.o
-	$(LINK.cc) $^ $(LOADLIBES) $(LDLIBS) -o $@
+	$(LINK.cc) main.o $(LOADLIBES) $(LDLIBS) -o $@
 #
 # This creates the library.
 #
