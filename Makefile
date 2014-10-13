@@ -4,8 +4,8 @@
 #
 # WORKING_DIR   : The directory containing the svn export
 # INSTALL_DIR   : The directory the installed product will live in.
-# (PRODUCT)_DIR : Where (PRODUCT) is replaced with the name of the
-#                 product in upper case, e.g. TEMPLATE_DIR.  This should
+# (PRODUCT)     : Where (PRODUCT) is replaced with the name of the
+#                 product in upper case, e.g. DESITEMPLATE.  This should
 #                 be the same as WORKING_DIR for typical installs.
 #
 # Use this shell to interpret shell commands, & pass its value to sub-make

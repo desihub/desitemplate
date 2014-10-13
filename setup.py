@@ -11,12 +11,12 @@ setup_keywords = dict()
 #
 # THESE SETTINGS NEED TO BE CHANGED FOR EVERY PRODUCT.
 #
-setup_keywords['name'] = 'template'
+setup_keywords['name'] = 'desiTemplate'
 setup_keywords['description'] = 'DESI template package'
 setup_keywords['author'] = 'Benjamin Alan Weaver'
 setup_keywords['author_email'] = 'baweaver@lbl.gov'
 setup_keywords['license'] = 'BSD'
-setup_keywords['url'] = 'https://desi.lbl.gov/svn/code/tools/template'
+setup_keywords['url'] = 'https://desi.lbl.gov/svn/code/tools/desiTemplate'
 #
 # END OF SETTINGS THAT NEED TO BE CHANGED.
 #
