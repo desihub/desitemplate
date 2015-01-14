@@ -21,21 +21,26 @@ MAKEFLAGS = w
 # in these subdirectories should also understand 'make all' & 'make clean'.
 # This list can be empty, but should still be defined.
 #
-SUBDIRS = src doc
+SUBDIRS = src
 #
 # This is a list of directories that make should copy to $INSTALL_DIR.
 # If a Makefile is present in these directories, 'make install' will be
 # called on them.  Otherwise it will just be a plain copy.
 #
-INSTALLDIRS = doc pro src
+INSTALLDIRS = pro src
 #
 # This is a message to make that these targets are 'actions' not files.
 #
-.PHONY : all install clean
+.PHONY : doc all install clean
+#
+# This will compile Doxygen docs.
+#
+doc :
+	@ if test -f doc/Doxygen.Makefile; then $(MAKE) -C doc -f Doxygen.Makefile all; fi
 #
 # This should compile all code prior to it being installed.
 #
-all :
+all : doc
 	@ for f in $(SUBDIRS); do if test -f $$f/Makefile; then $(MAKE) -C $$f all; fi; done
 #
 # This should handle the installation of files in $INSTALL_DIR.  Note that
@@ -46,6 +51,10 @@ install : all
 		if test -f $$f/Makefile; then $(MAKE) -C $$f install; else \
 			if test -d $(WORKING_DIR)/$$f -a ! -d $(INSTALL_DIR)/$$f; then \
 				/bin/cp -Rvf $(WORKING_DIR)/$$f $(INSTALL_DIR); fi; fi; done
+	@ if test -f doc/html; then \
+		if ! test -f $(INSTALL_DIR)/doc/html; then \
+			/bin/mkdir -p $(INSTALL_DIR)/doc/html; fi; \
+		/bin/cp -Rvf $(WORKING_DIR)/doc/html $(INSTALL_DIR)/doc/html/doxygen; fi
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).
