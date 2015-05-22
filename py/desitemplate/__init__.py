@@ -21,7 +21,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 #
 # Set version string.
 #
-__version__ = '0.4.0'
+__version__ = '0.4.1.dev'
 #
 # Clean up namespace
 #
