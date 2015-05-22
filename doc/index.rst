@@ -1,11 +1,11 @@
 =========================================
-Welcome to desiTemplates's documentation!
+Welcome to desitemplates's documentation!
 =========================================
 
 Introduction
 ============
 
-This is the documentation for desiTemplate.
+This is the documentation for desitemplate.
 
 Contents
 ========
@@ -20,14 +20,14 @@ directory and even display their sections.  See `the toctree documentation`_.
 
    hello.rst
 
-The desiTemplate package
+The desitemplate package
 ========================
 
 This is used to include docstrings from modules. See `the autodoc documentation`_.
 
 .. _`the autodoc documentation`: http://sphinx-doc.org/ext/autodoc.html?highlight=automodule#directive-automodule
 
-.. automodule:: desiTemplate
+.. automodule:: desitemplate
    :members:
 
 Indices and tables

@@ -1,5 +1,5 @@
 ============
-desiTemplate
+desitemplate
 ============
 
 Introduction

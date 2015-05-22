@@ -5,5 +5,5 @@
 # simple it is!
 #
 from sys import exit
-from desiTemplate.main import main
+from desitemplate.main import main
 exit(main())

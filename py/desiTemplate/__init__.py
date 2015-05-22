@@ -1,9 +1,9 @@
 # License information goes here
 # -*- coding: utf-8 -*-
 """
-========
-template
-========
+============
+desitemplate
+============
 
 This package is a template for other DESI_ Python_ packages.
 
@@ -17,12 +17,12 @@ svn:keywords must be set to HeadURL on this file.
 #
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
-from desiUtil.install import version
+# from desiUtil.install import version
 #
 # Set version string.
 #
-__version__ = version('$HeadURL$')
+__version__ = '0.3.3.dev'
 #
 # Clean up namespace
 #
-del version
+# del version
