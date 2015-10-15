@@ -18,7 +18,8 @@ directory and even display their sections.  See `the toctree documentation`_.
 .. toctree::
    :maxdepth: 2
 
-   hello.rst
+   api.rst
+   changes.rst
 
 The desitemplate package
 ========================

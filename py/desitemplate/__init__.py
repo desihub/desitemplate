@@ -7,9 +7,8 @@ desitemplate
 
 This package is a template for other DESI_ Python_ packages.
 
-The function desiUtil.install.version() should be used to set the ``__version__``
-package variable.  In order for this to work properly, the svn property
-svn:keywords must be set to HeadURL on this file.
+You should use ``python setup.py version`` to set the version.  This requires
+the desiutil package.
 
 .. _DESI: http://desi.lbl.gov
 .. _Python: http://python.org
@@ -17,12 +16,7 @@ svn:keywords must be set to HeadURL on this file.
 #
 from __future__ import absolute_import, division, print_function, unicode_literals
 # The line above will help with 2to3 support.
-# from desiUtil.install import version
 #
 # Set version string.
 #
-__version__ = '0.4.1.dev'
-#
-# Clean up namespace
-#
-# del version
+from ._version import __version__
