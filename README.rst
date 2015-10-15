@@ -150,3 +150,9 @@ product will take place in the src directory, and that the src/Makefile
 will handle that compiling.  It should be set up (or created in a configure
 stage) accordingly.  Libraries (shared or static) should be written to the
 ``lib/`` directory, and executables should be written to the ``bin/`` directory.
+
+License
+=======
+
+desiutil is free software licensed under a 3-clause BSD-style license. For details see
+the ``LICENSE.rst`` file.

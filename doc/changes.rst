@@ -8,6 +8,8 @@ Change Log
 * pip install support.
 * Travis build support.
 * ReadTheDocs support.
+* Add license.
+* Copy changes from desiutil code.
 
 0.4.0 (2015-05-22)
 ------------------
