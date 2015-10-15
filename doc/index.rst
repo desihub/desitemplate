@@ -21,16 +21,6 @@ directory and even display their sections.  See `the toctree documentation`_.
    api.rst
    changes.rst
 
-The desitemplate package
-========================
-
-This is used to include docstrings from modules. See `the autodoc documentation`_.
-
-.. _`the autodoc documentation`: http://sphinx-doc.org/ext/autodoc.html?highlight=automodule#directive-automodule
-
-.. automodule:: desitemplate
-   :members:
-
 Indices and tables
 ==================
 
