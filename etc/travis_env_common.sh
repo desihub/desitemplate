@@ -43,6 +43,9 @@ then
   $PIP_INSTALL beautifulsoup4
 fi
 
+# DESI DEPENDENCIES
+$PIP_INSTALL git+http://github.com/desihub/desiutil.git
+
 # DOCUMENTATION DEPENDENCIES
 # build_sphinx needs sphinx and matplotlib (for plot_directive). Note that
 # this matplotlib will *not* work with py 3.x, but our sphinx build is
