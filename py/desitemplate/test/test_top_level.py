@@ -9,7 +9,6 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import unittest
 import re
 from .. import __version__ as theVersion
-# from desispec.maskbits import spmask, ccdmask, fibermask
 #
 class TestTopLevel(unittest.TestCase):
 
