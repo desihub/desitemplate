@@ -89,13 +89,15 @@ README Files
 ~~~~~~~~~~~~
 
 Of course your product should have a README(.rst) file!  The preferred name and
-format is ``README.rst``.  When you add such a file to svn, be sure that
-the svn:mime-type property is set::
+format is ``README.rst``.  If your product lives on GitHub, it will automatically
+be rendered!
+
+If your product is in svn, be sure that the svn:mime-type property is set::
 
     svn propset svn:mime-type text/x-rst README.rst
 
 This will allow Trac to render your README.rst file in HTML.  In fact, you should
-set this mime-type for any and all .rst files that you have.
+set this mime-type for any and all .rst files that you have (in svn).
 
 setup.py
 ~~~~~~~~
@@ -136,7 +138,7 @@ Other Files
 .module file
 ~~~~~~~~~~~~
 
-In the etc/ directory is a file called template.module.  This file is used to
+In the etc/ directory is a file called ``desitemplate.module``.  This file is used to
 create a module file for the product at install time.  It should be renamed
 to the name of the product plus ``.module``.  It should be customized for
 the needs of the product.  In particular, any packages that your product
