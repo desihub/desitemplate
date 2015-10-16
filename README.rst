@@ -153,8 +153,24 @@ will handle that compiling.  It should be set up (or created in a configure
 stage) accordingly.  Libraries (shared or static) should be written to the
 ``lib/`` directory, and executables should be written to the ``bin/`` directory.
 
+
+Travis Build Status
+===================
+
+.. image:: https://img.shields.io/travis/desihub/desitemplate.svg
+    :target: https://travis-ci.org/desihub/desitemplate
+    :alt: Travis Build Status
+
+
+Test Coverage Status
+====================
+
+.. image:: https://coveralls.io/repos/desihub/desitemplate/badge.svg?branch=pre-1.0&service=github
+    :target: https://coveralls.io/github/desihub/desitemplate?branch=pre-1.0
+    :alt: Test Coverage Status
+
 License
 =======
 
-desiutil is free software licensed under a 3-clause BSD-style license. For details see
+desitemplate is free software licensed under a 3-clause BSD-style license. For details see
 the ``LICENSE.rst`` file.
