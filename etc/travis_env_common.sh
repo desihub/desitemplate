@@ -44,7 +44,7 @@ then
 fi
 
 # DESI DEPENDENCIES
-$PIP_INSTALL git+http://github.com/desihub/desiutil.git
+$PIP_INSTALL git+https://github.com/desihub/desiutil.git@${DESIUTIL_VERSION}#egg=desiutil
 
 # DOCUMENTATION DEPENDENCIES
 # build_sphinx needs sphinx and matplotlib (for plot_directive). Note that
