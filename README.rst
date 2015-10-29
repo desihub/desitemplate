@@ -113,6 +113,22 @@ to the name of the product plus ``.module``.  It should be customized for
 the needs of the product.  In particular, any packages that your product
 depends on should be added to the module file.
 
+Version File
+~~~~~~~~~~~~
+
+In the top-level of the py/destemplate directory, you will see a file called
+``_version.py``.  This file is created and maintained by the command::
+
+    python setup.py version
+
+This file should not be altered except by that command.  In preparation for a
+new tag of the product, you can use the variant::
+
+    python setup.py version --tag 1.2.3
+
+To set the version string to exactly '1.2.3'.  Make sure you check in your
+changes and immediately tag after doing this!
+
 License
 =======
 
