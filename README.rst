@@ -23,6 +23,33 @@ There is one important guideline when creating a new product.
 converting the product name into an environment variable, and shells don't
 like environment variable names that contain hyphens.
 
+Creating a New Product From Scratch
+===================================
+
+**DO NOT CLONE THIS PRODUCT!**
+
+Again, do not clone this product.  This could result in your changes being
+committed back to this product instead of your own product.  Nobody wants that.
+
+To create a new product, download the most recent *tag* of this product.
+You can find that in the Releases section on GitHub, or from the command-line::
+
+    wget -O desitemplate-1.0.0.tar.gz https://github.com/desihub/desitemplate/archive/1.0.0.tar.gz
+
+After you expand the tar file, replace all references to 'desitemplate' with the
+name of your product.  Note that there are some hidden files in this product!
+Then you can add your own files to the structure.  Then
+see the `GitHub article`_ on adding a new project to GitHub.
+
+.. _`GitHub article`: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+
+Updating an Existing Product
+============================
+
+If any of the functionality provided by the template changes, this will be
+announced on ``desi-data@desi.lbl.gov``.  Then download the latest tag and
+update the corresponding files.
+
 Installing a Product
 ====================
 
