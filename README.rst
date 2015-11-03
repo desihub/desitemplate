@@ -5,7 +5,12 @@ desitemplate
 Introduction
 ============
 
-This repository is intended to be a template for other repositories.
+This repository is intended to be a template for other DESI_ **Python** repositories.
+
+.. _DESI: https://desi.lbl.gov
+
+This repository contains *examples* that should be *copied* into another product.
+It is not designed to have much functionality on its own, or even to be installed.
 
 Product Name
 ============
@@ -18,17 +23,53 @@ There is one important guideline when creating a new product.
 converting the product name into an environment variable, and shells don't
 like environment variable names that contain hyphens.
 
+Creating a New Product From Scratch
+===================================
+
+**DO NOT CLONE THIS PRODUCT!**
+
+Again, do not clone this product.  This could result in your changes being
+committed back to this product instead of your own product.  Nobody wants that.
+
+To create a new product, download the most recent *tag* of this product.
+You can find that in the Releases section on GitHub, or from the command-line::
+
+    wget -O desitemplate-1.0.0.tar.gz https://github.com/desihub/desitemplate/archive/1.0.0.tar.gz
+
+After you expand the tar file, replace all references to 'desitemplate' with the
+name of your product.  Note that there are some hidden files in this product!
+Then you can add your own files to the structure.  Then
+see the `GitHub article`_ on adding a new project to GitHub.
+
+.. _`GitHub article`: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+
+Updating an Existing Product
+============================
+
+If any of the functionality provided by the template changes, this will be
+announced on ``desi-data@desi.lbl.gov``.  Then download the latest tag and
+update the corresponding files.
+
 Installing a Product
 ====================
 
-DESI products should be installed with desiInstall.  desiInstall decides how
-to perform an installation based on the files it finds in the top level of
-the product directory (see below).
+DESI_ Python packages should be installable by pip_.  For example::
 
-There may be situations where a product contains no code by design.  In this
-case it should still contain a stripped-down top-level Makefile that
-contains enough functionality to install the product, but otherwise
-does nothing.
+    pip install git+https://github.com/desihub/desitemplate.git@1.0.0
+
+In this example the string ``@1.0.0`` means "install tag 1.0.0".  You can
+also use this method to install branches (by branch name) or specific commits
+(using the git sha).
+
+At NERSC_, DESI_ products should be installed with desiInstall.  The main purpose
+of desiInstall is to ensure that different versions of a package are kept
+separate and to install `Module files`_.  desiInstall is not part of this package,
+but part of desiutil_.
+
+.. _pip: http://pip.readthedocs.org
+.. _NERSC: http://www.nersc.gov
+.. _desiutil: https://github.com/desihub/desiutil
+.. _`Module files`: http://modules.sourceforge.net
 
 Product Contents
 ================
@@ -36,99 +77,72 @@ Product Contents
 Directory Structure
 -------------------
 
-A DESI product may contain these top-level directories.  It may contain
+A DESI **Python** product may contain these top-level directories.  It may contain
 additional directories, but the directories listed here have special
 meaning for desiInstall.
 
 bin/
-    This directory is only needed if the product contains executable code.
-    If you do not have any scripts, and you are not planning to compile any
-    C/C++ code to create an executable, you can omit this directory from your
-    svn product.  This is more likely to be the case for Python-based products
-    than for C/C++-based products.  If this directory is present, but empty,
-    this is a signal to desiInstall that you intend to compile C/C++ code
-    to create an executable binary.
+    This directory is only needed if the product contains executable scripts.
+    If you do not have any scripts, you can omit this directory from your
+    product.
 doc/
     Contains high-level documentation of the software.  Typically, the code
     itself will contain its own documentation.  This area is for
-    documentation that discusses the product as a whole.  Both Sphinx_ (for
-    Python) and Doxygen_ can and will process files placed in this directory.
-    Sphinx_ documents should be .rst files, while Doxygen_ documents should
-    be .dox files.
+    documentation that discusses the product as a whole.  Sphinx_
+    will process files placed in this directory.
+    Sphinx_ documents should be .rst files.
 etc/
     Contains small data and configuration files used by the code.  This does not
     mean you should be checking in large data files!  This directory also
     contains the template module file for the product.  If additional files
-    are found in this directory, they will be installed automatically,
-    independent of any Makefile.
-lib/
-    If this directory is present, even if it is empty, it is a signal to
-    desiInstall that you intend to compile C/C++ code to produce a library
-    (static or shared). *At this time we have not set a policy on include
-    files (.h/.hpp) that may be required to use such libraries.*
-pro/
-    If this directory is present, support for IDL code will be added to the
-    Module file.
+    are found in this directory, desiInstall will install them automatically.
+    However, you should not rely on pip installing these files for you.
 py/
     Contains Python code.  Top-level Python package directories should be
     placed *within* the ``py/`` directory.  This simplifies the specification
     of the ``$PYTHONPATH`` variable.
-src/
-    Contains C/C++ code.
 
-You should only create the directories you actually need.  For example,
-if you are writing a pure Python product, you don't need the src directory.
+For a standard DESI_ Python package, you will probably need all of these
+directories, with the possible exception of the bin directory.
 
 .. _Sphinx: http://sphinx-doc.org
-.. _Doxygen: http://www.stack.nl/~dimitri/doxygen/
 
 Top-level Files
 ---------------
 
-README Files
-~~~~~~~~~~~~
+README.rst Files
+~~~~~~~~~~~~~~~~
 
 Of course your product should have a README(.rst) file!  The preferred name and
-format is ``README.rst``.  When you add such a file to svn, be sure that
-the svn:mime-type property is set::
+format is ``README.rst``.  If your product lives on GitHub, it will automatically
+be rendered!
+
+If your product is in svn, be sure that the svn:mime-type property is set::
 
     svn propset svn:mime-type text/x-rst README.rst
 
 This will allow Trac to render your README.rst file in HTML.  In fact, you should
-set this mime-type for any and all .rst files that you have.
+set this mime-type for any and all .rst files that you have (in svn).
 
 setup.py
 ~~~~~~~~
 
-If your product is primarily Python, it should have a setup.py file.  See
+Your Python product should have a setup.py file.  See
 the setup.py file included with this template product for further details.
-desiInstall will process this file with::
+This will allow the package to be installed with pip.
+In addition, desiInstall will process this file with::
 
     python setup.py install --prefix=$INSTALL_DIR.
 
 **If your product contains a setup.py file, desiInstall will assume that your
 product is Python-based and will process it accordingly.**
 
-Makefile
-~~~~~~~~
+LICENSE Files
+~~~~~~~~~~~~~
 
-If your product is C/C++-based, at minimum you will need a top-level Makefile,
-which should point to a Makefile in the ``src/`` directory.  This may suffice
-for relatively simple C/C++-based products.  More complicated compiles will
-require a configure file or the autotools files needed to generate a
-configure file.
-
-The Makefile will be called with ``make install``.  Helpful environment
-variables such as ``WORKING_DIR`` and ``INSTALL_DIR`` will be supplied by
-desiInstall.  In the example Makfile included with the template product,
-``make install`` performs a ``make all`` automatically.
-
-The Makefile should be prepared to handle the installation of
-files and directories in ``INSTALL_DIR``.  That is, desiInstall won't try
-to second-guess what files and directories you want to install.
-
-**If your product contains a setup.py file in addition to a Makefile,
-desiInstall will process the setup.py file first, then process the Makefile.**
+Your product should include a license!  The 3-clause BSD-style license is the
+standard adopted by DESI.  You can just copy the LICENSE.rst file in this
+package.  You might want to adjust the date on the copyright line though.
 
 Other Files
 -----------
@@ -136,17 +150,65 @@ Other Files
 .module file
 ~~~~~~~~~~~~
 
-In the etc/ directory is a file called template.module.  This file is used to
+In the etc/ directory is a file called ``desitemplate.module``.  This file is used to
 create a module file for the product at install time.  It should be renamed
 to the name of the product plus ``.module``.  It should be customized for
 the needs of the product.  In particular, any packages that your product
 depends on should be added to the module file.
 
-src/Makefile
+Module files are intended for use at NERSC_.  They are not processed
+automatically by pip.
+
+Version File
 ~~~~~~~~~~~~
 
-It is assumed that most of the heavy-duty work of compiling a C/C++-based
-product will take place in the src directory, and that the src/Makefile
-will handle that compiling.  It should be set up (or created in a configure
-stage) accordingly.  Libraries (shared or static) should be written to the
-``lib/`` directory, and executables should be written to the ``bin/`` directory.
+In the top-level of the py/destemplate directory, you will see a file called
+``_version.py``.  This file is created and maintained by the command::
+
+    python setup.py version
+
+This file should not be altered except by that command.  In preparation for a
+new tag of the product, you can use the variant::
+
+    python setup.py version --tag 1.2.3
+
+To set the version string to exactly '1.2.3'.  Make sure you check in your
+changes and immediately tag after doing this!
+
+Links to Automation
+===================
+
+DESI_ uses several online resources to test software and build documentation.
+This section contains example links to those services.
+
+Full Documentation
+------------------
+
+Please visit `desitemplate on Read the Docs`_
+
+.. image:: https://readthedocs.org/projects/desitemplate/badge/?version=latest
+    :target: http://desitemplate.readthedocs.org/en/latest/
+    :alt: Documentation Status
+
+.. _`desitemplate on Read the Docs`: http://desitemplate.readthedocs.org/en/latest/
+
+Travis Build Status
+-------------------
+
+.. image:: https://img.shields.io/travis/desihub/desitemplate.svg
+    :target: https://travis-ci.org/desihub/desitemplate
+    :alt: Travis Build Status
+
+
+Test Coverage Status
+--------------------
+
+.. image:: https://coveralls.io/repos/desihub/desitemplate/badge.svg?service=github
+    :target: https://coveralls.io/github/desihub/desitemplate
+    :alt: Test Coverage Status
+
+License
+=======
+
+desitemplate is free software licensed under a 3-clause BSD-style license. For details see
+the ``LICENSE.rst`` file.

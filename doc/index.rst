@@ -18,17 +18,8 @@ directory and even display their sections.  See `the toctree documentation`_.
 .. toctree::
    :maxdepth: 2
 
-   hello.rst
-
-The desitemplate package
-========================
-
-This is used to include docstrings from modules. See `the autodoc documentation`_.
-
-.. _`the autodoc documentation`: http://sphinx-doc.org/ext/autodoc.html?highlight=automodule#directive-automodule
-
-.. automodule:: desitemplate
-   :members:
+   api.rst
+   changes.rst
 
 Indices and tables
 ==================
