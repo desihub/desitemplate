@@ -53,7 +53,7 @@ update the corresponding files.
 Installing a Product
 ====================
 
-DESI_ Python packages should be installable by pip_.  For example:
+DESI_ Python packages should be installable by pip_.  For example::
 
     pip install git+https://github.com/desihub/desitemplate.git@1.0.0
 
