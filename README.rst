@@ -5,7 +5,12 @@ desitemplate
 Introduction
 ============
 
-This repository is intended to be a template for other **Python** repositories.
+This repository is intended to be a template for other DESI_ **Python** repositories.
+
+.. _DESI: https://desi.lbl.gov
+
+This repository contains *examples* that should be *copied* into another product.
+It is not designed to have much functionality on its own, or even to be installed.
 
 Product Name
 ============
@@ -21,14 +26,23 @@ like environment variable names that contain hyphens.
 Installing a Product
 ====================
 
-DESI products should be installed with desiInstall.  desiInstall decides how
-to perform an installation based on the files it finds in the top level of
-the product directory (see below).
+DESI_ Python packages should be installable by pip_.  For example:
 
-There may be situations where a product contains no code by design.  In this
-case it should still contain a stripped-down top-level Makefile that
-contains enough functionality to install the product, but otherwise
-does nothing.
+    pip install git+https://github.com/desihub/desitemplate.git@1.0.0
+
+In this example the string ``@1.0.0`` means "install tag 1.0.0".  You can
+also use this method to install branches (by branch name) or specific commits
+(using the git sha).
+
+At NERSC_, DESI_ products should be installed with desiInstall.  The main purpose
+of desiInstall is to ensure that different versions of a package are kept
+separate and to install `Module files`_.  desiInstall is not part of this package,
+but part of desiutil_.
+
+.. _pip: http://pip.readthedocs.org
+.. _NERSC: http://www.nersc.gov
+.. _desiutil: https://github.com/desihub/desiutil
+.. _`Module files`: http://modules.sourceforge.net
 
 Product Contents
 ================
@@ -54,14 +68,15 @@ etc/
     Contains small data and configuration files used by the code.  This does not
     mean you should be checking in large data files!  This directory also
     contains the template module file for the product.  If additional files
-    are found in this directory, they will be installed automatically.
+    are found in this directory, desiInstall will install them automatically.
+    However, you should not rely on pip installing these files for you.
 py/
     Contains Python code.  Top-level Python package directories should be
     placed *within* the ``py/`` directory.  This simplifies the specification
     of the ``$PYTHONPATH`` variable.
 
-You should only create the directories you actually need!  For example,
-if you are writing a pure Python library, you don't need the bin directory.
+For a standard DESI_ Python package, you will probably need all of these
+directories, with the possible exception of the bin directory.
 
 .. _Sphinx: http://sphinx-doc.org
 
@@ -87,7 +102,8 @@ setup.py
 
 Your Python product should have a setup.py file.  See
 the setup.py file included with this template product for further details.
-desiInstall will process this file with::
+This will allow the package to be installed with pip.
+In addition, desiInstall will process this file with::
 
     python setup.py install --prefix=$INSTALL_DIR.
 
@@ -112,6 +128,9 @@ create a module file for the product at install time.  It should be renamed
 to the name of the product plus ``.module``.  It should be customized for
 the needs of the product.  In particular, any packages that your product
 depends on should be added to the module file.
+
+Module files are intended for use at NERSC_.  They are not processed
+automatically by pip.
 
 Version File
 ~~~~~~~~~~~~
