@@ -2,14 +2,16 @@
 Change Log
 ==========
 
-1.0.0 (unreleased)
+1.0.0 (2015-11-03)
 ------------------
 
 * pip install support.
 * Travis build support.
 * ReadTheDocs support.
+* Coveralls support.
 * Add license.
 * Copy changes from desiutil code.
+* Move C++ code to separate package.
 
 0.4.0 (2015-05-22)
 ------------------
