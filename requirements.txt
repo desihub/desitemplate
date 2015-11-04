@@ -1,0 +1,6 @@
+setuptools
+requests
+Sphinx
+coverage
+coveralls
+git+https://github.com/desihub/desiutil@travis-test#egg=desiutil
