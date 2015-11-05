@@ -2,10 +2,14 @@
 Change Log
 ==========
 
-1.0.1 (unreleased)
+1.1.0 (unreleased)
 ------------------
 
-* No changes yet.
+* Minor tweaks to enable Python 3 support.
+* Use requirements.txt to specify required packages.
+* Simplify `Travis CI`_ builds.
+
+.. _`Travis CI`: http://travis-ci.org
 
 1.0.0 (2015-11-03)
 ------------------

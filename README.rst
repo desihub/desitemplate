@@ -157,7 +157,7 @@ hidden files included in this product.
 .travis.yml
     This is the configuration file for `Travis CI`_ tests.  This file might
     need to be adjusted to suit your package.  In particular, the file
-    included with this package has Python 3 tests that you package might not
+    included with this package has Python 3 tests that your package might not
     be ready for yet.  Just comment those out.
 
 .. _`Travis CI`: http://travis-ci.org
