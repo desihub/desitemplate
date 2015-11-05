@@ -34,7 +34,7 @@ committed back to this product instead of your own product.  Nobody wants that.
 To create a new product, download the most recent *tag* of this product.
 You can find that in the Releases section on GitHub, or from the command-line::
 
-    wget -O desitemplate-1.0.0.tar.gz https://github.com/desihub/desitemplate/archive/1.0.0.tar.gz
+    wget -O desitemplate-1.0.0.tar.gz https://github.com/desihub/desitemplate/archive/1.1.0.tar.gz
 
 After you expand the tar file, replace all references to 'desitemplate' with the
 name of your product.  Note that there are some hidden files in this product!
@@ -55,11 +55,11 @@ Installing a Product
 
 DESI_ Python packages should be installable by pip_.  For example::
 
-    pip install git+https://github.com/desihub/desitemplate.git@1.0.0
+    pip install git+https://github.com/desihub/desitemplate.git@1.1.0
 
-In this example the string ``@1.0.0`` means "install tag 1.0.0".  You can
+In this example the string ``@1.1.0`` means "install tag 1.1.0".  You can
 also use this method to install branches (by branch name) or specific commits
-(using the git sha).
+(using the git hash).
 
 At NERSC_, DESI_ products should be installed with desiInstall.  The main purpose
 of desiInstall is to ensure that different versions of a package are kept
@@ -143,6 +143,48 @@ LICENSE Files
 Your product should include a license!  The 3-clause BSD-style license is the
 standard adopted by DESI.  You can just copy the LICENSE.rst file in this
 package.  You might want to adjust the date on the copyright line though.
+
+Automation Support Files
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to the standard ``.gitignore`` file, there are two other
+hidden files included in this product.
+
+.coveragerc
+    Configuration for the test coverage.  You will need to edit this file
+    to change the name of the product.
+
+.travis.yml
+    This is the configuration file for `Travis CI`_ tests.  This file might
+    need to be adjusted to suit your package.  In particular, the file
+    included with this package has Python 3 tests that your package might not
+    be ready for yet.  Just comment those out.
+
+.. _`Travis CI`: http://travis-ci.org
+
+Requirements File
+~~~~~~~~~~~~~~~~~
+
+The requirements.txt file contains other Python packages required by this
+package.  In particular, this file will be processed during Travis tests to
+install packages needed for the tests.  This file is processed with the
+command::
+
+    pip install -r requirements.txt
+
+Manifest File
+~~~~~~~~~~~~~
+
+The ``MANIFEST.in`` file contains instructions for the setup system that will
+be used to construct an "official" tarball of the package.  For example,
+this file will be used by the command::
+
+    python setup.py sdist
+
+This file is absolutely necessary if your package will be distributed via
+PyPI_.
+
+.. _PyPI: http://pypi.python.org
 
 Other Files
 -----------
