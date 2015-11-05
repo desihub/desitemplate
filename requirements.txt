@@ -1,3 +1,1 @@
-setuptools
-requests
 git+https://github.com/desihub/desiutil@travis-test#egg=desiutil

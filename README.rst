@@ -144,6 +144,48 @@ Your product should include a license!  The 3-clause BSD-style license is the
 standard adopted by DESI.  You can just copy the LICENSE.rst file in this
 package.  You might want to adjust the date on the copyright line though.
 
+Automation Support Files
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to the standard ``.gitignore`` file, there are two other
+hidden files included in this product.
+
+.coveragerc
+    Configuration for the test coverage.  You will need to edit this file
+    to change the name of the product.
+
+.travis.yml
+    This is the configuration file for `Travis CI`_ tests.  This file might
+    need to be adjusted to suit your package.  In particular, the file
+    included with this package has Python 3 tests that you package might not
+    be ready for yet.  Just comment those out.
+
+.. _`Travis CI`: http://travis-ci.org
+
+Requirements File
+~~~~~~~~~~~~~~~~~
+
+The requirements.txt file contains other Python packages required by this
+package.  In particular, this file will be processed during Travis tests to
+install packages needed for the tests.  This file is processed with the
+command::
+
+    pip install -r requirements.txt
+
+Manifest File
+~~~~~~~~~~~~~
+
+The ``MANIFEST.in`` file contains instructions for the setup system that will
+be used to construct an "official" tarball of the package.  For example,
+this file will be used by the command::
+
+    python setup.py sdist
+
+This file is absolutely necessary if your package will be distributed via
+PyPI_.
+
+.. _PyPI: http://pypi.python.org
+
 Other Files
 -----------
 
