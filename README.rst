@@ -34,7 +34,7 @@ committed back to this product instead of your own product.  Nobody wants that.
 To create a new product, download the most recent *tag* of this product.
 You can find that in the Releases section on GitHub, or from the command-line::
 
-    wget -O desitemplate-1.0.0.tar.gz https://github.com/desihub/desitemplate/archive/1.0.0.tar.gz
+    wget -O desitemplate-1.0.0.tar.gz https://github.com/desihub/desitemplate/archive/1.1.0.tar.gz
 
 After you expand the tar file, replace all references to 'desitemplate' with the
 name of your product.  Note that there are some hidden files in this product!
@@ -55,11 +55,11 @@ Installing a Product
 
 DESI_ Python packages should be installable by pip_.  For example::
 
-    pip install git+https://github.com/desihub/desitemplate.git@1.0.0
+    pip install git+https://github.com/desihub/desitemplate.git@1.1.0
 
-In this example the string ``@1.0.0`` means "install tag 1.0.0".  You can
+In this example the string ``@1.1.0`` means "install tag 1.1.0".  You can
 also use this method to install branches (by branch name) or specific commits
-(using the git sha).
+(using the git hash).
 
 At NERSC_, DESI_ products should be installed with desiInstall.  The main purpose
 of desiInstall is to ensure that different versions of a package are kept
