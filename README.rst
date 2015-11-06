@@ -34,7 +34,7 @@ committed back to this product instead of your own product.  Nobody wants that.
 To create a new product, download the most recent *tag* of this product.
 You can find that in the Releases section on GitHub, or from the command-line::
 
-    wget -O desitemplate-1.0.0.tar.gz https://github.com/desihub/desitemplate/archive/1.1.0.tar.gz
+    wget -O desitemplate-1.1.0.tar.gz https://github.com/desihub/desitemplate/archive/1.1.0.tar.gz
 
 After you expand the tar file, replace all references to 'desitemplate' with the
 name of your product.  Note that there are some hidden files in this product!
