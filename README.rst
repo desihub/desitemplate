@@ -217,6 +217,37 @@ new tag of the product, you can use the variant::
 To set the version string to exactly '1.2.3'.  Make sure you check in your
 changes and immediately tag after doing this!
 
+Enabling Testing and Other Automation
+=====================================
+
+The instructions above concern installing the necessary *files* but to perform
+Travis-CI tests, Coverage checks and automated documentation, GitHub packages
+also need special settings set.
+
+#. Create accounts on `Travis CI`_, `Read the Docs`_, and `Coveralls`_.
+#. Visit *e.g.* https://github.com/desihub/desitarget and click on
+   Settings (look for a gear icon on the right).  If you do not see this,
+   **stop now**.  In this case you probably don't have permission to
+   perform any of these steps.
+#. Under Settings click 'Webhooks & Services'.
+#. Click 'Add Service' and select 'Travis CI'.  Add your Travis account information.
+#. Repeat the previous step, but select 'ReadTheDocs'.
+   There is little to no account information to add here.
+#. Go to your Travis account, and activate the product you want to test.
+   In some cases this product will be under the desihub group,
+   rather than your personal account.
+#. Check the Travis settings for the account.  These settings should be ON:
+   'Build only if .travis.yml is present', 'Build pushes', 'Build pull requests'.
+#. Go to your Coveralls account and activate the product you want to test.
+   In some cases this product will be under the desihub group, rather than your
+   personal account.
+#. Go to your Read the Docs account, click 'Import a Project' and follow the
+   instructions.  For 'Documentation Type', select 'Sphinx Html'.
+#. Start testing...
+
+.. _`Read the Docs`: https://readthedocs.org
+.. _`Coveralls`: https://coveralls.io
+
 Links to Automation
 ===================
 
