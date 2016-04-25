@@ -5,7 +5,8 @@ Change Log
 1.1.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Update desiutil version.
+* Increase coverage.
 
 1.1.0 (2015-11-06)
 ------------------

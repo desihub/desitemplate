@@ -1,7 +1,6 @@
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
-"""
-test top-level desitemplate functions
+"""Test desitemplate.main functions
 """
 #
 from __future__ import (absolute_import, division, print_function,
@@ -10,15 +9,14 @@ from __future__ import (absolute_import, division, print_function,
 import unittest
 import re
 import sys
-from .. import __version__ as theVersion
+from ..main import main
 
 
 class TestTopLevel(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.versionre = re.compile(
-            r'([0-9]+!)?([0-9]+)(\.[0-9]+)*((a|b|rc|\.post|\.dev)[0-9]+)?')
+        pass
 
     @classmethod
     def tearDownClass(cls):
@@ -30,13 +28,10 @@ class TestTopLevel(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_version(self):
-        """Ensure the version conforms to PEP386/PEP440.
+    def test_main(self):
+        """Test the main() function.
         """
-        if sys.version_info.major == 3:
-            self.assertRegex(theVersion, self.versionre)
-        else:
-            self.assertRegexpMatches(theVersion, self.versionre)
+        pass
 
 
 if __name__ == '__main__':

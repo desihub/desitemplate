@@ -3,8 +3,11 @@
 """This docstring will be used to print a description of the main program.
 """
 #
-from __future__ import absolute_import, division, print_function, unicode_literals
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals)
 # The line above will help with 2to3 support.
+
+
 def main():
     """Main program.
 
@@ -24,9 +27,9 @@ def main():
     # Parse arguments
     #
     executable = basename(argv[0])
-    parser = ArgumentParser(description=__doc__,prog=executable)
+    parser = ArgumentParser(description=__doc__, prog=executable)
     parser.add_argument('-v', '--verbose', action='store_true', dest='verbose',
-        help='Print extra information.')
+                        help='Print extra information.')
     options = parser.parse_args()
     #
     #
