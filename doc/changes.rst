@@ -5,7 +5,8 @@ Change Log
 1.1.2 (unreleased)
 ------------------
 
-* No changes yet.
+* Update template Module file to reflect new DESI+Anaconda infrastructure.
+* Add boilerplate code to allow individual modules to be tested.
 
 1.1.1 (2016-04-25)
 ------------------
