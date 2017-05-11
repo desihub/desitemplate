@@ -2,7 +2,7 @@
 Change Log
 ==========
 
-1.2.0 (unreleased)
+1.2.0 (2017-05-11)
 ------------------
 
 * Update Travis test infrastructure and tweak documentation configuration.
