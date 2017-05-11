@@ -2,7 +2,12 @@
 Change Log
 ==========
 
-1.1.2 (unreleased)
+1.2.0 (unreleased)
+------------------
+
+* No changes yet.
+
+1.1.2 (2017-05-10)
 ------------------
 
 * Update template Module file to reflect new DESI+Anaconda infrastructure.
