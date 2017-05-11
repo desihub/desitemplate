@@ -5,7 +5,7 @@ Change Log
 1.2.0 (unreleased)
 ------------------
 
-* No changes yet.
+* Update Travis test infrastructure and tweak documentation configuration.
 
 1.1.2 (2017-05-10)
 ------------------
