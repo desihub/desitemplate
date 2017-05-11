@@ -9,16 +9,12 @@ from __future__ import (absolute_import, division, print_function,
 
 
 def main():
-    """Main program.
-
-    Parameters
-    ----------
-    None
+    """Entry-point for command-line scripts.
 
     Returns
     -------
-    main : int
-        Exit status that will be passed to ``sys.exit()``.
+    :class:`int`
+        Exit status that will be passed to :func:`sys.exit`.
     """
     from sys import argv
     from os.path import basename

@@ -8,10 +8,11 @@ desitemplate
 This package is a template for other DESI_ Python_ packages.
 
 You should use ``python setup.py version`` to set the version.  This requires
-the desiutil package.
+the desiutil_ package.
 
 .. _DESI: http://desi.lbl.gov
 .. _Python: http://python.org
+.. _desiutil: https://github.com/desihub/desiutil
 """
 #
 from __future__ import (absolute_import, division, print_function,
