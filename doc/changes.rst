@@ -2,10 +2,10 @@
 Change Log
 ==========
 
-1.2.1 (unreleased)
+1.2.1 (2017-10-26)
 ------------------
 
-* No changes yet.
+* Fix team name in LICENSE.rst file.
 
 1.2.0 (2017-05-11)
 ------------------
