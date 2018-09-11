@@ -7,6 +7,11 @@ Change Log
 
 The plan is to drop Python 2 support in this version.
 
+1.3.1 (unreleased)
+------------------
+
+* No changes yet.
+
 1.3.0 (2018-09-11)
 ------------------
 
