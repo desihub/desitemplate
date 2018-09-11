@@ -10,7 +10,7 @@ The plan is to drop Python 2 support in this version.
 1.3.0 (unreleased)
 ------------------
 
-* Update Travis and ReadTheDocs configuration to use webhooks.
+* Update ReadTheDocs configuration to use webhooks.
 
 1.2.1 (2017-10-26)
 ------------------
