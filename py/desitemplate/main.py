@@ -1,6 +1,10 @@
 # Licensed under a 3-clause BSD style license - see LICENSE.rst
 # -*- coding: utf-8 -*-
-"""This docstring will be used to print a description of the main program.
+"""
+desitemplate.main
+=================
+
+This module contains an example command-line function.
 """
 #
 from __future__ import (absolute_import, division, print_function,
@@ -23,7 +27,8 @@ def main():
     # Parse arguments
     #
     executable = basename(argv[0])
-    parser = ArgumentParser(description=__doc__, prog=executable)
+    parser = ArgumentParser(description="This is the overall description of the script",
+                            prog=executable)
     parser.add_argument('-v', '--verbose', action='store_true', dest='verbose',
                         help='Print extra information.')
     options = parser.parse_args()

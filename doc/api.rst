@@ -10,4 +10,7 @@ If you're loading a module here, and don't see some functions, try adding the
 ``:imported-members:`` option.
 
 .. automodule:: desitemplate
-   :members:
+    :members:
+
+.. automodule:: desitemplate.main
+    :members:

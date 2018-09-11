@@ -1,6 +1,6 @@
-=========================================
-Welcome to desitemplates's documentation!
-=========================================
+========================================
+Welcome to desitemplate's documentation!
+========================================
 
 Introduction
 ============
@@ -16,7 +16,7 @@ directory and even display their sections.  See `the toctree documentation`_.
 .. _`the toctree documentation`: http://sphinx-doc.org/markup/toctree.html
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    api.rst
    changes.rst
