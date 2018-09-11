@@ -7,10 +7,12 @@ Change Log
 
 The plan is to drop Python 2 support in this version.
 
-1.3.0 (unreleased)
+1.3.0 (2018-09-11)
 ------------------
 
-* Update ReadTheDocs configuration to use webhooks.
+* Update ReadTheDocs configuration to use webhooks (PR `#15`_).
+
+.. _`#15`: https://github.com/desihub/desitemplate/pull/15
 
 1.2.1 (2017-10-26)
 ------------------
