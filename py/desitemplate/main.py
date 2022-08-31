@@ -10,6 +10,7 @@ import os
 import sys
 from argparse import ArgumentParser
 
+
 def main():
     """Entry-point for command-line scripts.
 
