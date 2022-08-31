@@ -5,12 +5,7 @@ Change Log
 2.0.0 (unreleased)
 ------------------
 
-The plan is to drop Python 2 support in this version.
-
-1.3.1 (unreleased)
-------------------
-
-* No changes yet.
+* Update package layout with eventual deprecation of ``setup.py`` in mind.
 
 1.3.0 (2018-09-11)
 ------------------

@@ -2,6 +2,20 @@
 desitemplate
 ============
 
+|Actions Status| |Coveralls Status| |Documentation Status|
+
+.. |Actions Status| image:: https://github.com/desihub/desitemplate/workflows/CI/badge.svg
+    :target: https://github.com/desihub/desitemplate/actions
+    :alt: GitHub Actions CI Status
+
+.. |Coveralls Status| image:: https://coveralls.io/repos/desihub/desitemplate/badge.svg
+    :target: https://coveralls.io/github/desihub/desitemplate
+    :alt: Test Coverage Status
+
+.. |Documentation Status| image:: https://readthedocs.org/projects/desitemplate/badge/?version=latest
+    :target: https://desitemplate.readthedocs.io/en/latest/
+    :alt: Documentation Status
+
 Introduction
 ============
 
@@ -254,31 +268,10 @@ Links to Automation
 DESI_ uses several online resources to test software and build documentation.
 This section contains example links to those services.
 
-Full Documentation
-------------------
+Package API Documentation
+=========================
 
-Please visit `desitemplate on Read the Docs`_
-
-.. image:: https://readthedocs.org/projects/desitemplate/badge/?version=latest
-    :target: http://desitemplate.readthedocs.org/en/latest/
-    :alt: Documentation Status
-
-.. _`desitemplate on Read the Docs`: http://desitemplate.readthedocs.org/en/latest/
-
-Travis Build Status
--------------------
-
-.. image:: https://img.shields.io/travis/desihub/desitemplate.svg
-    :target: https://travis-ci.org/desihub/desitemplate
-    :alt: Travis Build Status
-
-
-Test Coverage Status
---------------------
-
-.. image:: https://coveralls.io/repos/desihub/desitemplate/badge.svg?service=github
-    :target: https://coveralls.io/github/desihub/desitemplate
-    :alt: Test Coverage Status
+Please visit `desitemplate on Read the Docs <https://desitemplate.readthedocs.io/en/latest/>`_.
 
 License
 =======

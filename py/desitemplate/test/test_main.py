@@ -2,10 +2,6 @@
 # -*- coding: utf-8 -*-
 """Test desitemplate.main functions
 """
-#
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
-#
 import unittest
 import re
 import sys
@@ -32,11 +28,3 @@ class TestMain(unittest.TestCase):
         """Test the main() function.
         """
         pass
-
-
-def test_suite():
-    """Allows testing of only this module with the command::
-
-        python setup.py test -m <modulename>
-    """
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
