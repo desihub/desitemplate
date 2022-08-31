@@ -48,7 +48,7 @@ committed back to this product instead of your own product.  Nobody wants that.
 To create a new product, download the most recent *tag* of this product.
 You can find that in the Releases section on GitHub, or from the command-line::
 
-    wget -O desitemplate-1.1.0.tar.gz https://github.com/desihub/desitemplate/archive/1.1.0.tar.gz
+    wget -O desitemplate-2.0.0.tar.gz https://github.com/desihub/desitemplate/archive/2.0.0.tar.gz
 
 After you expand the tar file, replace all references to 'desitemplate' with the
 name of your product.  Note that there are some hidden files in this product!
@@ -69,9 +69,9 @@ Installing a Product
 
 DESI_ Python packages should be installable by pip_.  For example::
 
-    pip install git+https://github.com/desihub/desitemplate.git@1.1.0
+    pip install git+https://github.com/desihub/desitemplate.git@2.0.0
 
-In this example the string ``@1.1.0`` means "install tag 1.1.0".  You can
+In this example the string ``@2.0.0`` means "install tag 2.0.0".  You can
 also use this method to install branches (by branch name) or specific commits
 (using the git hash).
 
@@ -141,14 +141,13 @@ set this mime-type for any and all .rst files that you have (in svn).
 setup.py
 ~~~~~~~~
 
-Your Python product should have a setup.py file.  See
-the setup.py file included with this template product for further details.
-This will allow the package to be installed with pip.
-In addition, desiInstall will process this file with::
+Although in the larger Python community, ``setup.py`` files are considered
+deprecated, for the time being, your Python product should have a ``setup.py`` file.  See
+the ``setup.py`` file included with this template product for further details.
+Typically DESI packages will be installed with desiInstall, which handles all of
+the low level ``pip install`` details.
 
-    python setup.py install --prefix=$INSTALL_DIR.
-
-**If your product contains a setup.py file, desiInstall will assume that your
+**If your product contains a ``setup.py`` file, desiInstall will assume that your
 product is Python-based and will process it accordingly.**
 
 LICENSE Files
@@ -164,27 +163,14 @@ Automation Support Files
 In addition to the standard ``.gitignore`` file, there are two other
 hidden files included in this product.
 
-.coveragerc
-    Configuration for the test coverage.  You will need to edit this file
-    to change the name of the product.
+.readthedocs.yml
+    Configuration for the ReadTheDocs builds.
 
-.travis.yml
-    This is the configuration file for `Travis CI`_ tests.  This file might
-    need to be adjusted to suit your package.  In particular, the file
-    included with this package has Python 3 tests that your package might not
-    be ready for yet.  Just comment those out.
+.github/workflows/python-package.yml
+    This is the configuration file for `GitHub Actions`_ tests.  This file might
+    need to be adjusted to suit your package.
 
-.. _`Travis CI`: http://travis-ci.org
-
-Requirements File
-~~~~~~~~~~~~~~~~~
-
-The requirements.txt file contains other Python packages required by this
-package.  In particular, this file will be processed during Travis tests to
-install packages needed for the tests.  This file is processed with the
-command::
-
-    pip install -r requirements.txt
+.. _`GitHub Actions`: https://github.com/desihub/desitemplate/actions
 
 Manifest File
 ~~~~~~~~~~~~~
@@ -193,7 +179,7 @@ The ``MANIFEST.in`` file contains instructions for the setup system that will
 be used to construct an "official" tarball of the package.  For example,
 this file will be used by the command::
 
-    python setup.py sdist
+    python -m build --sdist
 
 This file is absolutely necessary if your package will be distributed via
 PyPI_.
@@ -221,15 +207,18 @@ Version File
 In the top-level of the py/destemplate directory, you will see a file called
 ``_version.py``.  This file is created and maintained by the command::
 
-    python setup.py version
+    desi_update_version desitemplate
 
-This file should not be altered except by that command.  In preparation for a
+This file should not be altered except by that command.  ``desitemplate``
+should be replaced by the name of your package. In preparation for a
 new tag of the product, you can use the variant::
 
-    python setup.py version --tag 1.2.3
+    desi_update_version --tag 1.2.3 desitemplate
 
 To set the version string to exactly '1.2.3'.  Make sure you check in your
 changes and immediately tag after doing this!
+
+``desi_update_version`` is provided in the desiutil_ package.
 
 Enabling Testing and Other Automation
 =====================================
@@ -238,20 +227,14 @@ The instructions above concern installing the necessary *files* but to perform
 Travis-CI tests, Coverage checks and automated documentation, GitHub packages
 also need special settings set.
 
-#. Create accounts on `Travis CI`_, `Read the Docs`_, and `Coveralls`_.
+#. Create accounts on `Read the Docs`_, and `Coveralls`_.
 #. Visit *e.g.* https://github.com/desihub/desitarget and click on
    Settings (look for a gear icon on the right).  If you do not see this,
    **stop now**.  In this case you probably don't have permission to
    perform any of these steps.
 #. Under Settings click 'Webhooks & Services'.
-#. Click 'Add Service' and select 'Travis CI'.  Add your Travis account information.
-#. Repeat the previous step, but select 'ReadTheDocs'.
+#. Click 'Add Service', and select 'ReadTheDocs'.
    There is little to no account information to add here.
-#. Go to your Travis account, and activate the product you want to test.
-   In some cases this product will be under the desihub group,
-   rather than your personal account.
-#. Check the Travis settings for the account.  These settings should be ON:
-   'Build only if .travis.yml is present', 'Build pushes', 'Build pull requests'.
 #. Go to your Coveralls account and activate the product you want to test.
    In some cases this product will be under the desihub group, rather than your
    personal account.
