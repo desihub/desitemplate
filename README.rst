@@ -147,7 +147,7 @@ the ``setup.py`` file included with this template product for further details.
 Typically DESI packages will be installed with desiInstall, which handles all of
 the low level ``pip install`` details.
 
-**If your product contains a ``setup.py`` file, desiInstall will assume that your
+**If your product contains a setup.py file, desiInstall will assume that your
 product is Python-based and will process it accordingly.**
 
 LICENSE Files
