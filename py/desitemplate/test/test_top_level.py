@@ -3,10 +3,6 @@
 """
 test top-level desitemplate functions
 """
-#
-from __future__ import (absolute_import, division, print_function,
-                        unicode_literals)
-#
 import unittest
 import re
 import sys
@@ -33,15 +29,4 @@ class TestTopLevel(unittest.TestCase):
     def test_version(self):
         """Ensure the version conforms to PEP386/PEP440.
         """
-        if sys.version_info.major == 3:
-            self.assertRegex(theVersion, self.versionre)
-        else:
-            self.assertRegexpMatches(theVersion, self.versionre)
-
-
-def test_suite():
-    """Allows testing of only this module with the command::
-
-        python setup.py test -m <modulename>
-    """
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
+        self.assertRegex(theVersion, self.versionre)
