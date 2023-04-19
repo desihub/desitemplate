@@ -224,11 +224,11 @@ Enabling Testing and Other Automation
 =====================================
 
 The instructions above concern installing the necessary *files* but to perform
-Travis-CI tests, Coverage checks and automated documentation, GitHub packages
-also need special settings set.
+`GitHub Actions`_ tests, Coverage checks and automated documentation.
+In addition, GitHub packages also need special settings set.
 
 #. Create accounts on `Read the Docs`_, and `Coveralls`_.
-#. Visit *e.g.* https://github.com/desihub/desitarget and click on
+#. Visit *e.g.* https://github.com/desihub/desitemplate and click on
    Settings (look for a gear icon on the right).  If you do not see this,
    **stop now**.  In this case you probably don't have permission to
    perform any of these steps.

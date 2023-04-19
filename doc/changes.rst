@@ -2,10 +2,10 @@
 Change Log
 ==========
 
-2.0.0 (unreleased)
+2.0.0 (2023-04-19)
 ------------------
 
-* Update package layout with eventual deprecation of ``setup.py`` in mind.
+* Updated package layout with eventual deprecation of ``setup.py`` in mind.
 
 1.3.0 (2018-09-11)
 ------------------
