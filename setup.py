@@ -10,7 +10,7 @@ from setuptools import setup
 # First provide a helpful message if contributors try to run legacy commands.
 
 HELP = """This command is no longer supported.
-See https://desiutil.readthedocs.io/en/module-script/helpers.html#replacing-setup-py
+See https://desiutil.readthedocs.io/en/latest/helpers.html#replacing-setup-py
 for replacements.
 """
 
