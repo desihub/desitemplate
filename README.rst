@@ -145,7 +145,7 @@ pyproject.toml
 This file contains all the metadata about a project, as well as configuration for
 other tools such as test coverage.
 
-**If your product contains a ``pyproject.toml`` file, desiInstall will assume that your
+**If your product contains a pyproject.toml file, desiInstall will assume that your
 product is Python-based and will process it accordingly.**
 
 As of early 2025, a ``setup.py`` file may still be required if the Python package
