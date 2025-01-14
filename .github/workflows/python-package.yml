@@ -41,8 +41,10 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                os: [ubuntu-latest]
-                python-version: ['3.12']
+                os:
+                  - ubuntu-latest
+                python-version:
+                  - '3.12'
 
         steps:
             - name: Checkout code
@@ -71,8 +73,10 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                os: [ubuntu-latest]
-                python-version: ['3.12']
+                os:
+                  - ubuntu-latest
+                python-version:
+                  - '3.12'
 
         steps:
             - name: Checkout code
@@ -88,14 +92,39 @@ jobs:
             - name: Test the documentation
               run: sphinx-build -W --keep-going -b html doc doc/_build/html
 
+    scripts:
+        name: Script definition completeness test
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: false
+            matrix:
+                os:
+                  - ubuntu-latest
+                python-version:
+                  - '3.13'
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v5
+              with:
+                  python-version: ${{ matrix.python-version }}
+            - name: Compare contents of bin/ to options.scripts in setup.cfg
+              run: python -c 'import os; import sys; import tomllib; t = open("pyproject.toml", "rb"); pyproject = tomllib.load(t); t.close(); scripts = [os.path.basename(s) for s in pyproject["tool"]["setuptools"]["script-files"]]; sys.exit(int(set(os.listdir("bin")) != set(scripts)))'
+
     style:
         name: Style check
         runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false
             matrix:
-                os: [ubuntu-latest]
-                python-version: ['3.12']
+                os:
+                  - ubuntu-latest
+                python-version:
+                  - '3.12'
 
         steps:
             - name: Checkout code
