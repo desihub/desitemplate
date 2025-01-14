@@ -156,7 +156,7 @@ setup.cfg
 ~~~~~~~~~
 
 As of early 2025, a stub ``setup.cfg`` file is still required to set the
-cofiguration for ``pycodestyle``.
+configuration for ``pycodestyle``.
 
 LICENSE Files
 ~~~~~~~~~~~~~
