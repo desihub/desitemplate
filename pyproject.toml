@@ -1,4 +1,74 @@
 [build-system]
 requires = ["setuptools",
             "wheel"]
-build-backend = 'setuptools.build_meta'
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "desitemplate"
+dynamic = ["version", "readme"]
+authors = [ { name = "DESI Collaboration", email = "desi-data@desi.lbl.gov" } ]
+license = { file = "LICENSE.rst" }
+# license-files = ["LICENSE.rst"]
+description = "DESI template package"
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["DESI", "template"]
+classifiers = [ "Development Status :: 5 - Production/Stable",
+                "Environment :: Console",
+                "Intended Audience :: Science/Research",
+                "License :: OSI Approved :: BSD License",
+                "Operating System :: OS Independent",
+                "Programming Language :: Python :: 3",
+                "Topic :: Scientific/Engineering :: Astronomy",
+                "Topic :: System :: Software Distribution",
+                "Topic :: Utilities" ]
+
+[project.optional-dependencies]
+test = ["pytest"]
+coverage = ["pytest-cov", "coveralls"]
+doc = ["Sphinx", "sphinx-rtd-theme"]
+
+[project.urls]
+Documentation = "https://desitemplate.readthedocs.io/en/latest/"
+Repository = "https://github.com/desihub/desitemplate"
+Issues = "https://github.com/desihub/desitemplate/issues"
+Changelog = "https://github.com/desihub/desitemplate/blob/main/doc/changes.rst"
+
+[tool.setuptools]
+package-dir = {"" = "py"}
+script-files = ["bin/template_main_script"]
+
+[tool.setuptools.packages.find]
+where = ["py"]
+exclude = [".github/*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "desitemplate.__version__"}  # any module attribute compatible with ast.literal_eval
+readme = {file = ["README.rst"], content-type = "text/x-rst"}
+
+[tool.coverage.run]
+relative_files = true
+source = ["py/desitemplate"]
+omit = ["py/desitemplate/_version.py",
+        "py/desitemplate/conftest*",
+        "py/desitemplate/test/.",
+        "*/desitemplate/_version.py",
+        "*/desitemplate/conftest*",
+        "*/desitemplate/test/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+                # Have to re-enable the standard pragma
+                "pragma: no cover",
+                # Don't complain about packages we have installed
+                "except ImportError",
+                # Don't complain if tests don't hit assertions
+                "raise AssertionError",
+                "raise NotImplementedError",
+                # Don't complain about script hooks
+                "def main\\(.*\\):",
+                # Ignore branches that don't pertain to this version of Python
+                "pragma: py{ignore_python_version}",
+                # Don't complain about IPython completion helper
+                "def _ipython_key_completions_",
+                ]
