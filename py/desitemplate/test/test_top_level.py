@@ -5,7 +5,6 @@ test top-level desitemplate functions
 """
 import unittest
 import re
-import sys
 from .. import __version__ as theVersion
 
 
@@ -13,8 +12,7 @@ class TestTopLevel(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.versionre = re.compile(
-            r'([0-9]+!)?([0-9]+)(\.[0-9]+)*((a|b|rc|\.post|\.dev)[0-9]+)?')
+        cls.versionre = re.compile(r'([0-9]+!)?([0-9]+)(\.[0-9]+)*((a|b|rc|\.post|\.dev)[0-9]+)?')
 
     @classmethod
     def tearDownClass(cls):
