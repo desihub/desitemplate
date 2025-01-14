@@ -21,7 +21,7 @@ Introduction
 
 This repository is intended to be a template for other DESI_ **Python** repositories.
 
-.. _DESI: https://desi.lbl.gov
+.. _DESI: https://www.desi.lbl.gov
 
 This repository contains *examples* that should be *copied* into another product.
 It is not designed to have much functionality on its own, or even to be installed.
@@ -55,7 +55,7 @@ name of your product.  Note that there are some hidden files in this product!
 Then you can add your own files to the structure.  Then
 see the `GitHub article`_ on adding a new project to GitHub.
 
-.. _`GitHub article`: https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+.. _`GitHub article`: https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github
 
 Updating an Existing Product
 ============================
@@ -80,10 +80,10 @@ of desiInstall is to ensure that different versions of a package are kept
 separate and to install `Module files`_.  desiInstall is not part of this package,
 but part of desiutil_.
 
-.. _pip: http://pip.readthedocs.org
-.. _NERSC: http://www.nersc.gov
+.. _pip: https://pip.pypa.io/en/stable/
+.. _NERSC: https://www.nersc.gov
 .. _desiutil: https://github.com/desihub/desiutil
-.. _`Module files`: http://modules.sourceforge.net
+.. _`Module files`: https://modules.sourceforge.net
 
 Product Contents
 ================
@@ -119,7 +119,7 @@ py/
 For a standard DESI_ Python package, you will probably need all of these
 directories, with the possible exception of the bin directory.
 
-.. _Sphinx: http://sphinx-doc.org
+.. _Sphinx: https://www.sphinx-doc.org/en/master/
 
 Top-level Files
 ---------------
@@ -138,17 +138,25 @@ If your product is in svn, be sure that the svn:mime-type property is set::
 This will allow Trac to render your README.rst file in HTML.  In fact, you should
 set this mime-type for any and all .rst files that you have (in svn).
 
-setup.py
-~~~~~~~~
+pyproject.toml
+~~~~~~~~~~~~~~
 
-Although in the larger Python community, ``setup.py`` files are considered
-deprecated, for the time being, your Python product should have a ``setup.py`` file.  See
-the ``setup.py`` file included with this template product for further details.
-Typically DESI packages will be installed with desiInstall, which handles all of
-the low level ``pip install`` details.
+``pyproject.toml`` is the eventual replacement for ``setup.py`` and ``setup.cfg``.
+This file contains all the metadata about a project, as well as configuration for
+other tools such as test coverage.
 
-**If your product contains a setup.py file, desiInstall will assume that your
+**If your product contains a ``pyproject.toml`` file, desiInstall will assume that your
 product is Python-based and will process it accordingly.**
+
+As of early 2025, a ``setup.py`` file may still be required if the Python package
+contains C/C++ code to be compiled. That configuration is beyond the scope
+of this template.
+
+setup.cfg
+~~~~~~~~~
+
+As of early 2025, a stub ``setup.cfg`` file is still required to set the
+cofiguration for ``pycodestyle``.
 
 LICENSE Files
 ~~~~~~~~~~~~~
@@ -184,7 +192,7 @@ this file will be used by the command::
 This file is absolutely necessary if your package will be distributed via
 PyPI_.
 
-.. _PyPI: http://pypi.python.org
+.. _PyPI: https://pypi.org
 
 Other Files
 -----------
