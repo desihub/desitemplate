@@ -14,7 +14,7 @@
 
 import sys
 import os
-import os.path
+from importlib import import_module
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -25,17 +25,6 @@ sys.path.insert(0, os.path.abspath('../py'))
 
 # If your documentation needs a minimal Sphinx version, state it here.
 
-try:
-    import sphinx.ext.napoleon
-    napoleon_extension = 'sphinx.ext.napoleon'
-except ImportError:
-    try:
-        import sphinxcontrib.napoleon
-        napoleon_extension = 'sphinxcontrib.napoleon'
-        needs_sphinx = '1.2'
-    except ImportError:
-        needs_sphinx = '1.3'
-
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
@@ -45,18 +34,18 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
-    napoleon_extension
+    'sphinx.ext.napoleon',
+    'sphinx_rtd_theme',
 ]
 
 # Configuration for intersphinx, copied from astropy.
 intersphinx_mapping = {
-    'python': ('http://docs.python.org/', None),
-    # 'python3': ('http://docs.python.org/3/', path.abspath(path.join(path.dirname(__file__), 'local/python3links.inv'))),
-    'numpy': ('http://docs.scipy.org/doc/numpy/', None),
-    'scipy': ('http://docs.scipy.org/doc/scipy/reference/', None),
-    'matplotlib': ('http://matplotlib.org/', None),
-    'astropy': ('http://docs.astropy.org/en/stable/', None),
-    'h5py': ('http://docs.h5py.org/en/latest/', None)
+    'python': ('https://docs.python.org/3/', None),
+    'numpy': ('https://numpy.org/doc/stable/', None),
+    'scipy': ('https://docs.scipy.org/doc/scipy/', None),
+    'matplotlib': ('https://matplotlib.org/stable/', None),
+    'astropy': ('https://docs.astropy.org/en/stable/', None),
+    'h5py': ('https://docs.h5py.org/en/latest/', None)
     }
 
 # Add any paths that contain templates here, relative to this directory.
@@ -73,7 +62,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'desitemplate'
-copyright = u'2014-2023, DESI Collaboration'
+copyright = u'2014-2025, DESI Collaboration'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -131,7 +120,12 @@ napoleon_include_private_with_doc = True
 # This value contains a list of modules to be mocked up. This is useful when
 # some external dependencies are not met at build time and break the
 # building process.
-# autodoc_mock_imports = ['astropy', 'astropy.io']
+autodoc_mock_imports = []
+for missing in ('numpy', 'astropy', 'matplotlib', 'yaml'):
+    try:
+        foo = import_module(missing)
+    except ImportError:
+        autodoc_mock_imports.append(missing)
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -139,12 +133,7 @@ napoleon_include_private_with_doc = True
 # a list of builtin themes.
 #html_theme = 'default'
 #html_theme = 'haiku'
-try:
-    import sphinx_rtd_theme
-    html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-except ImportError:
-    pass
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
