@@ -18,6 +18,6 @@ sphinx:
 # formats: all
 
 # Optionally set the version of Python and requirements required to build your docs
-# python:
-#     install:
-#         - requirements: doc/rtd-requirements.txt
+python:
+    install:
+        - requirements: doc/rtd-requirements.txt
