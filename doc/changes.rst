@@ -5,12 +5,16 @@ Change Log
 2.0.1 (unreleased)
 ------------------
 
-* No changes yet.
+* Update test matrix as a suggestion for other packages (PR `#18`_).
+
+.. _`#18`: https://github.com/desihub/desitemplate/pull/18
 
 2.0.0 (2023-04-19)
 ------------------
 
-* Updated package layout with eventual deprecation of ``setup.py`` in mind.
+* Updated package layout with eventual deprecation of ``setup.py`` in mind (PR `#17`_).
+
+.. _`#17`: https://github.com/desihub/desitemplate/pull/17
 
 1.3.0 (2018-09-11)
 ------------------
