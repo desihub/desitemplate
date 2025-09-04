@@ -6,7 +6,7 @@ import contextlib
 import io
 import unittest
 from unittest.mock import patch
-from ..main import main
+from ..main import main, _parse_arguments
 
 
 class TestMain(unittest.TestCase):
@@ -15,32 +15,38 @@ class TestMain(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """This function will be run before *any* tests in this class.
+        """
         pass
 
     @classmethod
     def tearDownClass(cls):
+        """This function will be run after *all* tests in this class.
+        """
         pass
 
     def setUp(self):
+        """This function will be run before every test in this class.
+        """
         pass
 
     def tearDown(self):
+        """This function will be run after every test in this class.
+        """
         pass
 
     @patch('sys.argv', ['template_main_script'])
-    def test_main(self):
+    @patch('builtins.print')
+    def test_main(self, mock_print):
         """Test the main() function.
         """
-        sout = io.StringIO()
-        with contextlib.redirect_stdout(sout):
-            self.assertEqual(main(), 0)
-        self.assertEqual(sout.getvalue(), 'Hello World!\n')
+        status = main()
+        self.assertEqual(status, 0)
+        mock_print.assert_called_once_with('Hello World!')
 
     @patch('sys.argv', ['template_main_script', '--verbose'])
-    def test_main_verbose(self):
-        """Test the main() function with -v.
+    def test_parse_arguments(self):
+        """Test command-line argument parsing.
         """
-        sout = io.StringIO()
-        with contextlib.redirect_stdout(sout):
-            self.assertEqual(main(), 0)
-        self.assertEqual(sout.getvalue(), 'Hello World!\nVerbose selected!\n')
+        options = _parse_arguments()
+        self.assertTrue(options.verbose)

@@ -4,5 +4,5 @@
 desitemplate.test
 =================
 
-Initialize the unit test framework.
+Used to initialize the unit test framework via ``pytest``.
 """
