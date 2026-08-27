@@ -148,15 +148,15 @@ other tools such as test coverage.
 **If your product contains a pyproject.toml file, desiInstall will assume that your
 product is Python-based and will process it accordingly.**
 
-As of early 2025, a ``setup.py`` file may still be required if the Python package
+As of mid-2026, a ``setup.py`` file may still be required if the Python package
 contains C/C++ code to be compiled. That configuration is beyond the scope
 of this template.
 
 setup.cfg
 ~~~~~~~~~
 
-As of early 2025, a stub ``setup.cfg`` file is still required to set the
-configuration for ``pycodestyle``.
+As of mid-2026, a stub ``setup.cfg`` file is still required to set the
+configuration for ``pycodestyle`` and ``flake8``.
 
 LICENSE Files
 ~~~~~~~~~~~~~

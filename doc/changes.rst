@@ -2,7 +2,7 @@
 Change Log
 ==========
 
-3.0.0 (unreleased)
+3.0.0 (2026-08-27)
 ------------------
 
 * Migrate package configuration to use ``pyproject.toml`` (PR `#19`_).
