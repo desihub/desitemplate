@@ -17,4 +17,4 @@ the desiutil_ package.
 #
 # Set version string.
 #
-from ._version import __version__
+from ._version import __version__  # noqa: F401
