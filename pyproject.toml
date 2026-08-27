@@ -39,7 +39,7 @@ Changelog = "https://github.com/desihub/desitemplate/blob/main/doc/changes.rst"
 
 [tool.setuptools]
 package-dir = {"" = "py"}
-script-files = ["bin/template_main_script"]
+script-files = ["bin/*"]
 # By default, include-package-data is true in pyproject.toml,
 # so you do NOT have to specify this line.
 # include-package-data = true
