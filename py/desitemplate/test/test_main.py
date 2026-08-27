@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 """Test desitemplate.main functions
 """
+# import contextlib
+# import io
 import unittest
 from unittest.mock import patch
 from ..main import main, _parse_arguments

@@ -1,4 +1,128 @@
 [build-system]
-requires = ["setuptools",
-            "wheel"]
+# It is not necessary to add "wheel" to requires.
+requires = ["setuptools"]
 build-backend = 'setuptools.build_meta'
+
+[project]
+name = "desitemplate"
+dynamic = ["version"]
+authors = [ { name = "DESI Collaboration", email = "desi-data@desi.lbl.gov" } ]
+license = "BSD-3-Clause"
+license-files = ["LICENSE.rst"]
+readme = "README.rst"
+description = "DESI template package"
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["DESI", "template"]
+classifiers = [ "Development Status :: 5 - Production/Stable",
+                "Environment :: Console",
+                "Intended Audience :: Science/Research",
+                "Operating System :: OS Independent",
+                "Programming Language :: Python :: 3",
+                "Topic :: Scientific/Engineering :: Astronomy",
+                "Topic :: System :: Software Distribution",
+                "Topic :: Utilities" ]
+
+[project.optional-dependencies]
+test = ["pytest"]
+coverage = ["pytest-cov", "coveralls"]
+doc = ["Sphinx", "sphinx-rtd-theme"]
+
+[project.urls]
+Documentation = "https://desitemplate.readthedocs.io/en/latest/"
+Repository = "https://github.com/desihub/desitemplate"
+Issues = "https://github.com/desihub/desitemplate/issues"
+Changelog = "https://github.com/desihub/desitemplate/blob/main/doc/changes.rst"
+
+# [project.scripts]
+# template_main_script = desitemplate.main:main
+
+[tool.setuptools]
+package-dir = {"" = "py"}
+#
+# This line lists script files for packaging purposes. Wildcards, e.g. bin/*
+# are not allowed and will cause a crash.
+#
+script-files = ["bin/template_main_script"]
+#
+# DESI-specific note: even though the use of script-files is discouraged (but
+# not deprecated) by the setuptools developers, we need this
+# both to support main/trunk installs of DESI packages (they won't necessarily
+# be auto-generated in that case) and because some scripts included in Python
+# packages are actually shell scripts (or possibly some other language).
+#
+# If there are just a small number of scripts, and that number is stable, they
+# should be listed here. Maintaining a large number of scripts is more
+# difficult. For that, it is better to retain a setup.py file that automates
+# this task (and possibly does nothing else). Here is a snippet of how this is done:
+#
+# setup_keywords = dict()
+# if os.path.isdir('bin'):
+#     setup_keywords['scripts'] = [fname for fname in glob.glob(os.path.join('bin', '*'))
+#                                  if os.access(fname, os.X_OK)]
+# setup(**setup_keywords)
+#
+# For fully worked-out examples see:
+# - https://github.com/desihub/desispec/blob/main/setup.py
+# - https://github.com/desihub/desitarget/blob/main/setup.py
+#
+# Also note that 'script-files' in pyproject.toml really does correspond to
+# 'scripts' in setup.py, and [project.scripts] (see above) corresponds to
+# 'entry_points' in setup.py. See
+# https://setuptools.pypa.io/en/latest/userguide/entry_point.html#console-scripts.
+#
+# Finally, it is possible to automatically check that the number of script-files
+# entries actually match the contents of a directory. See the file
+# .github/workflows/python-package.yml for an example. It runs code equivalent to
+# this snippet:
+#
+# import os
+# import sys
+# import tomllib
+# t = open("pyproject.toml", "rb")
+# pyproject = tomllib.load(t)
+# t.close()
+# scripts = [os.path.basename(s) for s in pyproject["tool"]["setuptools"]["script-files"]]
+# sys.exit(int(set(os.listdir("bin")) != set(scripts)))
+#
+# By default, include-package-data is true in pyproject.toml,
+# so you do NOT have to specify this line.
+# include-package-data = true
+
+# [tool.setuptools.package-data]
+# "desitemplate" = ["data/*"]
+# "desitemplate.test" = ["t/*"]
+
+[tool.setuptools.packages.find]
+where = ["py"]
+exclude = [".github/*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "desitemplate.__version__"}  # any module attribute compatible with ast.literal_eval
+
+[tool.coverage.run]
+relative_files = true
+source = ["py/desitemplate"]
+omit = ["py/desitemplate/_version.py",
+        "py/desitemplate/conftest*",
+        "py/desitemplate/test/*",
+        "*/desitemplate/_version.py",
+        "*/desitemplate/conftest*",
+        "*/desitemplate/test/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+                # Have to re-enable the standard pragma
+                "pragma: no cover",
+                # Don't complain about packages we have installed
+                "except ImportError",
+                # Don't complain if tests don't hit assertions
+                "raise AssertionError",
+                "raise NotImplementedError",
+                # Don't complain about script hooks
+                "def main\\(.*\\):",
+                # Ignore branches that don't pertain to this version of Python
+                "pragma: py{ignore_python_version}",
+                # Don't complain about IPython completion helper
+                "def _ipython_key_completions_",
+                ]

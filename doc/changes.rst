@@ -2,12 +2,14 @@
 Change Log
 ==========
 
-2.0.1 (unreleased)
+3.0.0 (unreleased)
 ------------------
 
+* Migrate package configuration to use ``pyproject.toml`` (PR `#19`_).
 * Update test matrix as a suggestion for other packages (PR `#18`_).
 
 .. _`#18`: https://github.com/desihub/desitemplate/pull/18
+.. _`#19`: https://github.com/desihub/desitemplate/pull/19
 
 2.0.0 (2023-04-19)
 ------------------

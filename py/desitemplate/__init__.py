@@ -10,11 +10,11 @@ This package is a template for other DESI_ Python_ packages.
 You should use :command:`desi_update_version` to set the version.  This requires
 the desiutil_ package.
 
-.. _DESI: http://desi.lbl.gov
-.. _Python: http://python.org
+.. _DESI: https://www.desi.lbl.gov
+.. _Python: https://www.python.org
 .. _desiutil: https://github.com/desihub/desiutil
 """
 #
 # Set version string.
 #
-from ._version import __version__
+from ._version import __version__  # noqa: F401
