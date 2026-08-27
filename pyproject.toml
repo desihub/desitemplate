@@ -39,7 +39,33 @@ Changelog = "https://github.com/desihub/desitemplate/blob/main/doc/changes.rst"
 
 [tool.setuptools]
 package-dir = {"" = "py"}
-script-files = ["bin/*"]
+#
+# This line adds script files for packaging purposes. Wildcards, e.g. bin/*
+# are not allowed and will cause a crash.
+#
+script-files = ["bin/template_main_script"]
+#
+# DESI-specific note: even though the use of script-files is discouraged (but
+# not deprecated) by the setuptools developers, we need this
+# both to support main/trunk installs of DESI packages and because
+# some scripts included in Python packages are actually shell scripts or
+# possibly some other language.
+#
+# If there are just a small number of scripts and that number is stable, they
+# should be listed here. Maintaining a large number of scripts is more
+# difficult. For that, it is better to retain a setup.py file that automates
+# this task (and does nothing else). Here is a snippet of how this is done:
+#
+# setup_keywords = dict()
+# if os.path.isdir('bin'):
+#     setup_keywords['scripts'] = [fname for fname in glob.glob(os.path.join('bin', '*'))
+#                                  if os.access(fname, os.X_OK)]
+# setup(**setup_keywords)
+#
+# For fully worked-out examples see
+# - https://github.com/desihub/desispec/blob/main/setup.py
+# - https://github.com/desihub/desitarget/blob/main/setup.py
+#
 # By default, include-package-data is true in pyproject.toml,
 # so you do NOT have to specify this line.
 # include-package-data = true
